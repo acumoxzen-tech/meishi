@@ -7,15 +7,13 @@
 <title>山中 一馬 | 還日堂</title>
 
 <meta name="description" content="Kazuma Yamanaka / 還日堂">
-<meta property="og:title" content="山中 一馬 | 還日堂">
-<meta property="og:description" content="日常に、還る場所。">
-<meta property="og:type" content="website">
 
 <style>
 
 :root{
+
   --paper:#f6f1e7;
-  --paper2:#e8dfd0;
+  --paper2:#e7dfd2;
 
   --ink:#17130f;
   --soft:#8b8377;
@@ -53,7 +51,7 @@ body{
   min-height:100svh;
 
   background:
-  radial-gradient(circle at top,#8c8478 0,#4f483f 38%,#1f1b18 100%);
+  radial-gradient(circle at top,#8d8579 0,#4d463d 38%,#1d1917 100%);
 
   color:var(--ink);
 
@@ -79,19 +77,19 @@ body{
 
   overflow:hidden;
 
+  isolation:isolate;
+
   min-height:calc(100svh - 36px);
 
   padding:34px 30px 120px;
 
   background:
-  radial-gradient(circle at 20% 0%,rgba(255,255,255,.9),transparent 35%),
+  radial-gradient(circle at 20% 0%,rgba(255,255,255,.92),transparent 35%),
   linear-gradient(180deg,var(--paper),var(--paper2));
 
   box-shadow:
   0 40px 100px rgba(0,0,0,.42),
   inset 0 0 0 1px rgba(255,255,255,.72);
-
-  isolation:isolate;
 }
 
 .card::before{
@@ -101,7 +99,7 @@ body{
   position:absolute;
   inset:0;
 
-  opacity:.16;
+  opacity:.14;
 
   background-image:
   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
@@ -119,56 +117,28 @@ body{
 
   z-index:1;
 
-  right:-18px;
-  top:26px;
+  right:-40px;
+  top:10px;
 
-  width:390px;
+  width:420px;
 
-  opacity:.24;
+  opacity:.95;
 
   filter:
-  invert(1)
-  brightness(.16)
-  contrast(1.8)
-  saturate(.6);
+  grayscale(1)
+  brightness(1.02)
+  contrast(1.02);
 
   mix-blend-mode:multiply;
 
   pointer-events:none;
   user-select:none;
-
-  /* デボス感 */
-
-  box-shadow:
-    -8px -8px 14px rgba(255,255,255,.82),
-    10px 10px 18px rgba(0,0,0,.08);
-
-  border-radius:12px;
 }
 
-/* 円デボス */
+/* 紙に圧した感じ */
 
-.emboss{
-
-  position:absolute;
-
-  z-index:1;
-
-  right:-62px;
-  top:74px;
-
-  width:310px;
-  height:310px;
-
-  border-radius:50%;
-
-  border:2px solid rgba(0,0,0,.05);
-
-  box-shadow:
-  inset 4px 4px 10px rgba(255,255,255,.9),
-  inset -4px -4px 10px rgba(0,0,0,.04);
-
-  opacity:.72;
+.bg-logo::after{
+  content:"";
 }
 
 .top{
@@ -297,23 +267,79 @@ body{
   text-decoration:none;
 }
 
-/* アクション */
+/* 正方形SNS */
 
-.actions{
+.socials{
 
   position:relative;
 
   z-index:2;
 
-  margin-top:46px;
+  margin-top:54px;
 
-  display:grid;
+  display:flex;
 
-  gap:13px;
+  gap:14px;
 }
 
-button,
-.link{
+.social{
+
+  width:64px;
+  height:64px;
+
+  border:1px solid rgba(0,0,0,.08);
+
+  background:
+  linear-gradient(
+  145deg,
+  rgba(255,255,255,.55),
+  rgba(255,255,255,.12));
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  box-shadow:
+  inset -3px -3px 6px rgba(255,255,255,.5),
+  inset 3px 3px 6px rgba(0,0,0,.03);
+
+  transition:.25s ease;
+}
+
+.social:hover{
+
+  transform:translateY(-2px);
+
+  background:
+  linear-gradient(
+  145deg,
+  rgba(255,255,255,.8),
+  rgba(255,255,255,.2));
+}
+
+.social img{
+
+  width:24px;
+  height:24px;
+
+  opacity:.72;
+}
+
+/* 電話帳ボタン */
+
+.contact-btn{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:26px;
+}
+
+button{
 
   width:100%;
 
@@ -333,8 +359,6 @@ button,
 
   padding:0 18px;
 
-  text-decoration:none;
-
   font:12px var(--sans);
 
   letter-spacing:.18em;
@@ -346,14 +370,12 @@ button,
   transition:.25s ease;
 }
 
-button:hover,
-.link:hover{
+button:hover{
 
-  background:rgba(255,255,255,.5);
+  background:rgba(255,255,255,.48);
 }
 
 .arrow{
-
   color:var(--soft);
 }
 
@@ -422,10 +444,8 @@ button:hover,
 
 <img
 class="bg-logo"
-src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
+src="6270D063-3D15-421B-862E-E9B549AD7858.PNG"
 alt="">
-
-<div class="emboss"></div>
 
 <div class="top">
 
@@ -483,34 +503,39 @@ alt="">
 
 </div>
 
-<div class="actions">
+<!-- SNS -->
 
-  <button onclick="saveContact()">
-    電話帳に登録する
-    <span class="arrow">→</span>
-  </button>
+<div class="socials">
 
   <a
-  class="link"
+  class="social"
   href="https://instagram.com/"
   target="_blank">
 
-    Instagram
-
-    <span class="arrow">→</span>
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
 
   </a>
 
   <a
-  class="link"
+  class="social"
   href="https://line.me/"
   target="_blank">
 
-    LINE
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111498.png">
+
+  </a>
+
+</div>
+
+<div class="contact-btn">
+
+  <button onclick="saveContact()">
+
+    電話帳に登録する
 
     <span class="arrow">→</span>
 
-  </a>
+  </button>
 
 </div>
 
