@@ -3,57 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Kazuma | Digital Card</title>
+  <title>Kazuma | Digital Meishi</title>
   <meta name="description" content="Kazuma のデジタル名刺">
   <meta property="og:title" content="Kazuma">
-  <meta property="og:description" content="Digital Business Card">
+  <meta property="og:description" content="Digital Meishi">
   <meta property="og:type" content="website">
 
   <style>
     :root{
-      --black:#060604;
-      --ink:#17130f;
-      --paper:#f4efe6;
-      --paper2:#e5dccd;
-      --gold:#ad915b;
-      --muted:#81786c;
-      --line:rgba(23,19,15,.13);
+      --sumi:#080807;
+      --ink:#171410;
+      --paper:#f2eadc;
+      --paper2:#dfd4c2;
+      --stone:#b8aa94;
+      --muted:#7b7163;
+      --red:#8f2e22;
+      --line:rgba(23,20,16,.14);
       --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
       --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
     }
 
     *{box-sizing:border-box}
 
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
       background:#050504;
       color:var(--ink);
       font-family:var(--serif);
-      letter-spacing:.04em;
+      letter-spacing:.05em;
     }
 
     a{color:inherit;text-decoration:none}
 
-    .stage{
+    .phone{
       width:min(460px,100%);
       min-height:100svh;
       margin:auto;
       background:
-        radial-gradient(circle at 30% 0%,rgba(255,255,255,.96),transparent 34%),
+        radial-gradient(circle at 20% 0%,rgba(255,255,255,.9),transparent 35%),
         linear-gradient(180deg,var(--paper),var(--paper2));
       overflow:hidden;
-      box-shadow:0 40px 120px rgba(0,0,0,.45);
+      box-shadow:0 44px 120px rgba(0,0,0,.5);
+      position:relative;
     }
 
     .hero{
-      min-height:86svh;
+      min-height:100svh;
       position:relative;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.86)),
+        url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1400&auto=format&fit=crop")
+        center/cover;
       color:white;
       overflow:hidden;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.88)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop")
-        center/cover;
     }
 
     .hero::before{
@@ -61,22 +65,26 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 45% 36%,rgba(255,255,255,.16),transparent 22%),
-        linear-gradient(90deg,rgba(0,0,0,.72),transparent 55%,rgba(0,0,0,.42));
+        radial-gradient(circle at 52% 42%,rgba(255,255,255,.13),transparent 21%),
+        linear-gradient(90deg,rgba(0,0,0,.78),transparent 58%,rgba(0,0,0,.42));
       z-index:1;
     }
 
     .hero::after{
       content:"";
       position:absolute;
-      inset:-80px;
-      background-image:
-        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
-      background-size:42px 42px;
-      transform:rotate(-8deg);
+      inset:-30%;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 0,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px,
+          transparent 12px
+        );
+      transform:rotate(-11deg);
+      opacity:.38;
       z-index:1;
-      opacity:.5;
     }
 
     .top{
@@ -89,128 +97,171 @@
       justify-content:space-between;
       align-items:flex-start;
       font-family:var(--sans);
-      color:rgba(255,255,255,.76);
       font-size:10px;
-      letter-spacing:.28em;
+      letter-spacing:.26em;
+      color:rgba(255,255,255,.68);
     }
 
-    .tiny-brand{
+    .small-kanji{
       writing-mode:vertical-rl;
       font-family:var(--serif);
       font-size:13px;
-      letter-spacing:.35em;
-      opacity:.82;
+      letter-spacing:.34em;
+      color:rgba(255,255,255,.76);
     }
 
-    .name-block{
+    .enso{
       position:absolute;
       z-index:2;
-      left:30px;
-      right:30px;
-      bottom:86px;
+      width:210px;
+      height:210px;
+      border:1.4px solid rgba(255,255,255,.44);
+      border-left-color:rgba(255,255,255,.08);
+      border-bottom-color:rgba(255,255,255,.2);
+      border-radius:50%;
+      right:-58px;
+      top:20%;
+      transform:rotate(-24deg);
     }
 
-    .kicker{
-      font:10px var(--sans);
-      letter-spacing:.32em;
-      color:rgba(255,255,255,.62);
-      margin-bottom:18px;
-    }
-
-    .name{
-      font-size:64px;
-      line-height:.95;
+    .vertical-main{
+      position:absolute;
+      z-index:2;
+      right:44px;
+      top:23%;
+      writing-mode:vertical-rl;
+      font-size:58px;
       font-weight:400;
-      letter-spacing:.03em;
-      margin:0;
+      line-height:1.05;
+      letter-spacing:.26em;
     }
 
-    .name span{
-      display:block;
-      margin-left:54px;
-    }
-
-    .role{
-      margin-top:22px;
-      font:12px var(--sans);
-      letter-spacing:.16em;
-      line-height:1.9;
-      color:rgba(255,255,255,.72);
-    }
-
-    .scroll{
+    .vertical-copy{
       position:absolute;
       z-index:2;
-      bottom:26px;
+      left:34px;
+      bottom:110px;
+      writing-mode:vertical-rl;
+      font-size:15px;
+      line-height:2.4;
+      letter-spacing:.28em;
+      color:rgba(255,255,255,.86);
+    }
+
+    .hero-meta{
+      position:absolute;
+      z-index:2;
       left:30px;
-      font:10px var(--sans);
-      letter-spacing:.26em;
-      color:rgba(255,255,255,.45);
+      bottom:38px;
+      font-family:var(--sans);
+      font-size:10px;
+      letter-spacing:.24em;
+      color:rgba(255,255,255,.55);
+      line-height:2;
     }
 
     .content{
+      padding:32px 18px 48px;
       position:relative;
-      padding:30px 20px 46px;
     }
 
-    .panel{
-      margin-top:-78px;
+    .card{
+      margin-top:-82px;
       position:relative;
       z-index:5;
+      background:
+        linear-gradient(180deg,rgba(250,247,240,.92),rgba(237,229,216,.9));
+      border:1px solid rgba(255,255,255,.76);
       border-radius:34px;
-      background:rgba(248,244,237,.84);
-      border:1px solid rgba(255,255,255,.72);
-      box-shadow:0 30px 80px rgba(0,0,0,.28);
+      box-shadow:0 34px 90px rgba(0,0,0,.32);
       backdrop-filter:blur(18px);
       overflow:hidden;
     }
 
-    .panel-inner{
-      padding:28px 24px 24px;
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(0,0,0,.06) .7px,transparent .7px);
+      background-size:7px 7px;
+      opacity:.18;
+      pointer-events:none;
     }
 
-    .intro{
+    .inner{
+      position:relative;
+      z-index:1;
+      padding:30px 24px 26px;
+    }
+
+    .identity{
       display:grid;
-      grid-template-columns:92px 1fr;
+      grid-template-columns:1fr 78px;
       gap:18px;
-      align-items:center;
+      align-items:start;
     }
 
-    .avatar{
-      width:92px;
-      height:92px;
-      border-radius:50%;
-      object-fit:cover;
-      box-shadow:0 16px 34px rgba(0,0,0,.18);
-      border:4px solid rgba(255,255,255,.8);
+    .name-jp{
+      writing-mode:vertical-rl;
+      font-size:42px;
+      font-weight:400;
+      letter-spacing:.22em;
+      line-height:1.2;
+      height:156px;
     }
 
-    .intro h2{
-      margin:0 0 8px;
-      font-size:30px;
+    .name-en{
+      margin-top:18px;
+      font:11px var(--sans);
+      letter-spacing:.3em;
+      color:var(--muted);
+    }
+
+    .seal{
+      width:64px;
+      height:64px;
+      border-radius:18px;
+      border:1px solid rgba(143,46,34,.36);
+      color:var(--red);
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      transform:rotate(4deg);
+      justify-self:end;
+      margin-top:6px;
+    }
+
+    .title{
+      margin-top:28px;
+      padding-top:22px;
+      border-top:1px solid var(--line);
+      font-size:14px;
+      line-height:2;
+      color:var(--muted);
+    }
+
+    .title b{
+      color:var(--ink);
       font-weight:400;
     }
 
-    .intro p{
-      margin:0;
-      color:var(--muted);
-      font:12px var(--sans);
-      letter-spacing:.12em;
-      line-height:1.8;
-    }
-
-    .statement{
-      margin:28px 0 24px;
-      padding-left:16px;
-      border-left:1px solid var(--gold);
+    .phrase{
+      margin:24px 0 26px;
+      padding:22px 20px;
+      border-radius:24px;
+      background:rgba(255,255,255,.38);
+      border:1px solid rgba(255,255,255,.66);
       font-size:14px;
-      line-height:2.15;
+      line-height:2.1;
     }
 
     .contact{
+      display:grid;
+      gap:0;
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
-      padding:10px 0;
+      padding:8px 0;
     }
 
     .row{
@@ -218,11 +269,13 @@
       grid-template-columns:72px 1fr;
       gap:14px;
       padding:13px 0;
-      font:14px var(--sans);
+      font-family:var(--sans);
+      font-size:14px;
+      letter-spacing:.02em;
     }
 
     .label{
-      color:var(--gold);
+      color:var(--red);
       font-size:10px;
       letter-spacing:.22em;
       padding-top:3px;
@@ -235,112 +288,143 @@
     }
 
     button,.btn{
-      min-height:55px;
+      min-height:56px;
       border-radius:999px;
       border:0;
       display:flex;
-      align-items:center;
       justify-content:center;
-      font:13px var(--sans);
-      letter-spacing:.15em;
+      align-items:center;
+      font-family:var(--sans);
+      font-size:13px;
+      letter-spacing:.16em;
       cursor:pointer;
     }
 
     .primary{
+      background:var(--sumi);
       color:white;
-      background:#15120f;
-      box-shadow:0 18px 38px rgba(0,0,0,.18);
+      box-shadow:0 18px 40px rgba(0,0,0,.2);
     }
 
     .ghost{
-      color:#17130f;
-      background:rgba(255,255,255,.5);
-      border:1px solid rgba(255,255,255,.8);
+      background:rgba(255,255,255,.44);
+      border:1px solid rgba(255,255,255,.76);
+      color:var(--ink);
     }
 
-    .link-strip{
+    .subnav{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:10px;
       margin-top:12px;
     }
 
-    .mini{
-      height:78px;
+    .subnav a{
+      height:76px;
       border-radius:20px;
-      background:rgba(255,255,255,.42);
+      background:rgba(255,255,255,.38);
       display:grid;
       place-items:center;
-      font:11px var(--sans);
-      letter-spacing:.12em;
+      font-family:var(--sans);
+      font-size:11px;
+      letter-spacing:.14em;
       box-shadow:0 10px 24px rgba(0,0,0,.05);
     }
 
-    .note{
-      padding:30px 22px 34px;
+    .zen-note{
+      margin-top:32px;
+      border-radius:32px;
+      overflow:hidden;
+      background:#0c0b09;
+      color:white;
+      position:relative;
+      box-shadow:0 26px 70px rgba(0,0,0,.25);
+    }
+
+    .zen-note::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.72)),
+        url("https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?q=80&w=1200&auto=format&fit=crop")
+        center/cover;
+      opacity:.86;
+    }
+
+    .zen-note .text{
+      position:relative;
+      z-index:1;
+      min-height:260px;
+      display:grid;
+      place-items:center;
       text-align:center;
-      background:#11100d;
-      color:rgba(255,255,255,.78);
-      font-size:14px;
-      line-height:2;
-      letter-spacing:.14em;
+      padding:36px 24px;
+      font-size:16px;
+      line-height:2.3;
+      letter-spacing:.18em;
     }
 
     .signature{
-      margin-top:18px;
-      font-size:34px;
-      color:rgba(255,255,255,.5);
+      margin-top:24px;
       font-family:cursive;
+      font-size:36px;
       letter-spacing:.02em;
+      color:rgba(255,255,255,.55);
     }
 
     footer{
-      padding:26px 0 0;
+      padding:28px 0 0;
       text-align:center;
-      font:10px var(--sans);
-      letter-spacing:.22em;
+      font-family:var(--sans);
+      font-size:10px;
+      letter-spacing:.24em;
       color:var(--muted);
     }
 
     @media(min-width:720px){
       body{padding:42px 0}
-      .stage{border-radius:38px;min-height:auto}
+      .phone{border-radius:38px;min-height:auto}
     }
   </style>
 </head>
 
 <body>
-  <main class="stage">
+  <main class="phone">
     <section class="hero">
       <div class="top">
-        <div>DIGITAL CARD</div>
-        <div class="tiny-brand">還日堂</div>
+        <div>DIGITAL MEISHI</div>
+        <div class="small-kanji">個人名刺</div>
       </div>
 
-      <div class="name-block">
-        <div class="kicker">PERSONAL CARD</div>
-        <h1 class="name">Kazu<span>ma</span></h1>
-        <div class="role">
-          Founder / Creative Direction<br>
-          KANJITSUDO
-        </div>
-      </div>
+      <div class="enso"></div>
+      <h1 class="vertical-main">Kazuma</h1>
+      <div class="vertical-copy">静けさのある仕事を。</div>
 
-      <div class="scroll">SCROLL</div>
+      <div class="hero-meta">
+        PERSONAL CARD<br>
+        TOKYO / JAPAN
+      </div>
     </section>
 
     <section class="content">
-      <div class="panel">
-        <div class="panel-inner">
-          <div class="intro">
-            <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Kazuma">
+      <div class="card">
+        <div class="inner">
+          <div class="identity">
             <div>
-              <h2>Kazuma</h2>
-              <p>Personal Business Card<br>Tokyo / Japan</p>
+              <div class="name-jp">Kazuma</div>
+              <div class="name-en">KAZUMA / PERSONAL CARD</div>
             </div>
+            <div class="seal">和</div>
           </div>
 
-          <div class="statement">
+          <div class="title">
+            <b>Kazuma</b><br>
+            Founder / Creative Direction<br>
+            KANJITSUDO
+          </div>
+
+          <div class="phrase">
             ご縁をいただきありがとうございます。<br>
             連絡先・SNS・所在地はこちらにまとめています。
           </div>
@@ -370,16 +454,18 @@
             <a class="btn ghost" href="mailto:info@kanjitsudo.jp">メールを送る</a>
           </div>
 
-          <div class="link-strip">
-            <a class="mini" href="https://instagram.com/" target="_blank">Instagram</a>
-            <a class="mini" href="https://line.me/" target="_blank">LINE</a>
-            <a class="mini" href="https://maps.google.com/" target="_blank">Map</a>
+          <div class="subnav">
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://line.me/" target="_blank">LINE</a>
+            <a href="https://maps.google.com/" target="_blank">Map</a>
           </div>
         </div>
+      </div>
 
-        <div class="note">
-          静けさのある仕事を、<br>
-          丁寧に、深く。
+      <div class="zen-note">
+        <div class="text">
+          余白をつくり、<br>
+          本質に触れる。
           <div class="signature">Kazuma</div>
         </div>
       </div>
@@ -400,7 +486,7 @@ TEL;TYPE=CELL:09012345678
 EMAIL:info@kanjitsudo.jp
 URL:https://kanjitsudo.jp
 ADR;TYPE=WORK:;;Tokyo;;;Japan
-NOTE:Kazuma / Personal Business Card
+NOTE:Kazuma / Personal Digital Meishi
 END:VCARD`;
 
       const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
