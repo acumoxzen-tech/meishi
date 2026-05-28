@@ -1,3 +1,6 @@
+任せて。
+GitHubの index.html をこれで丸ごと上書きして。
+
 <!doctype html>
 <html lang="ja">
 <head>
@@ -5,359 +8,304 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Kazuma | 還日堂</title>
   <meta name="description" content="Kazuma / 還日堂のデジタル名刺">
-  <meta property="og:title" content="Kazuma | 還日堂">
-  <meta property="og:description" content="日常に、還る場所。">
-  <meta property="og:type" content="website">
-
   <style>
     :root{
-      --bg:#0b0b08;
+      --black:#070706;
+      --ink:#18140f;
       --paper:#f3eee3;
-      --paper2:#e5dccd;
-      --ink:#17130f;
-      --muted:#7c7468;
-      --gold:#b59a65;
-      --line:rgba(23,19,15,.14);
+      --gold:#b79b63;
+      --muted:#82786b;
       --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
       --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
     }
-
     *{box-sizing:border-box}
     body{
       margin:0;
+      background:#050504;
       color:var(--ink);
-      background:
-        radial-gradient(circle at 50% 0%,#4a4135 0,#181612 34%,#050504 100%);
       font-family:var(--serif);
-      letter-spacing:.04em;
+      letter-spacing:.05em;
     }
-
-    .wrap{
-      width:min(440px,100%);
-      min-height:100svh;
-      margin:auto;
-      background:var(--paper);
-      box-shadow:0 40px 100px rgba(0,0,0,.45);
-      overflow:hidden;
-    }
-
+    a{color:inherit;text-decoration:none}
     .hero{
-      height:360px;
+      min-height:100svh;
       position:relative;
       color:white;
+      overflow:hidden;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82)),
-        url("https://images.unsplash.com/photo-1602928298849-325cec8771c0?q=80&w=1200&auto=format&fit=crop")
+        linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.92)),
+        url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop")
         center/cover;
     }
-
     .hero::after{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 42%,transparent 0 28%,rgba(0,0,0,.35) 72%),
-        linear-gradient(90deg,rgba(0,0,0,.62),transparent 48%,rgba(0,0,0,.32));
-      pointer-events:none;
+        radial-gradient(circle at 50% 42%,rgba(255,255,255,.12),transparent 22%),
+        linear-gradient(90deg,rgba(0,0,0,.78),transparent 52%,rgba(0,0,0,.35));
     }
-
     .brand{
       position:absolute;
       z-index:2;
-      top:26px;
-      left:24px;
+      top:28px;
+      left:26px;
     }
-
-    .brand .jp{
-      font-size:25px;
-      letter-spacing:.24em;
+    .brand-jp{
+      font-size:24px;
+      letter-spacing:.28em;
     }
-
-    .brand .en{
-      margin-top:7px;
+    .brand-en{
+      margin-top:8px;
       font:10px var(--sans);
       letter-spacing:.34em;
       opacity:.72;
     }
-
-    .mark{
+    .seal{
       position:absolute;
       z-index:2;
-      right:25px;
-      top:28px;
-      width:48px;
-      height:48px;
-      border:1px solid rgba(255,255,255,.72);
+      right:28px;
+      top:30px;
+      width:52px;
+      height:52px;
+      border:1px solid rgba(255,255,255,.75);
       border-radius:50%;
       display:grid;
       place-items:center;
-      font-size:20px;
+      font-size:22px;
     }
-
-    .vertical{
+    .vertical-copy{
       position:absolute;
       z-index:2;
-      left:28px;
-      bottom:44px;
+      left:32px;
+      top:28%;
       writing-mode:vertical-rl;
-      font-size:15px;
-      line-height:2.1;
-      letter-spacing:.25em;
+      font-size:18px;
+      line-height:2.3;
+      letter-spacing:.28em;
     }
-
     .hero-title{
       position:absolute;
       z-index:2;
-      right:34px;
-      bottom:38px;
+      right:36px;
+      bottom:88px;
       writing-mode:vertical-rl;
-      font-size:42px;
-      letter-spacing:.25em;
+      font-size:54px;
       font-weight:400;
+      letter-spacing:.24em;
+      line-height:1.15;
     }
-
-    .card{
-      position:relative;
-      padding:0 24px 30px;
+    .scroll{
+      position:absolute;
+      z-index:2;
+      bottom:26px;
+      left:50%;
+      transform:translateX(-50%);
+      font:10px var(--sans);
+      letter-spacing:.3em;
+      opacity:.58;
+    }
+    .profile-wrap{
       background:
-        radial-gradient(circle at 30% 0%,rgba(255,255,255,.9),transparent 34%),
-        linear-gradient(180deg,var(--paper),var(--paper2));
+        radial-gradient(circle at 20% 0%,rgba(255,255,255,.95),transparent 34%),
+        linear-gradient(180deg,#f6f1e8,#ded3c2);
+      padding:34px 18px 42px;
     }
-
-    .profile{
+    .card{
+      max-width:430px;
+      margin:-88px auto 0;
+      position:relative;
+      z-index:5;
+      border-radius:34px;
+      overflow:hidden;
+      background:rgba(248,244,236,.82);
+      backdrop-filter:blur(18px);
+      box-shadow:0 35px 80px rgba(0,0,0,.32);
+      border:1px solid rgba(255,255,255,.65);
+    }
+    .card-head{
+      padding:30px 26px 22px;
       display:grid;
-      grid-template-columns:98px 1fr;
+      grid-template-columns:96px 1fr;
       gap:20px;
-      align-items:end;
-      padding-top:28px;
+      align-items:center;
     }
-
     .avatar{
-      width:98px;
-      height:98px;
+      width:96px;
+      height:96px;
       border-radius:50%;
       object-fit:cover;
-      background:#ddd;
-      box-shadow:0 14px 35px rgba(0,0,0,.16);
-      border:4px solid rgba(255,255,255,.68);
+      box-shadow:0 18px 36px rgba(0,0,0,.18);
     }
-
     h1{
-      margin:0 0 6px;
+      margin:0 0 8px;
+      font-size:31px;
       font-weight:400;
-      font-size:30px;
-      letter-spacing:.04em;
     }
-
     .role{
       font:12px var(--sans);
       color:var(--muted);
-      letter-spacing:.1em;
+      letter-spacing:.12em;
+      line-height:1.7;
     }
-
-    .statement{
-      margin:26px 0 22px;
-      padding-left:16px;
-      border-left:1px solid var(--gold);
+    .message{
+      padding:0 26px 28px;
       font-size:14px;
-      line-height:2.1;
+      line-height:2.15;
     }
-
-    .info{
-      display:grid;
-      gap:1px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      overflow:hidden;
-      background:var(--line);
+    .meishi{
+      margin:0 18px 22px;
+      padding:22px 20px;
+      border-radius:24px;
+      background:#f9f5ed;
+      border:1px solid rgba(24,20,15,.1);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);
     }
-
-    .row{
-      background:rgba(255,255,255,.42);
-      padding:15px 16px;
+    .line{
       display:grid;
-      grid-template-columns:74px 1fr;
-      gap:10px;
+      grid-template-columns:78px 1fr;
+      gap:12px;
+      padding:14px 0;
+      border-bottom:1px solid rgba(24,20,15,.1);
       font:14px var(--sans);
     }
-
+    .line:last-child{border-bottom:none}
     .label{
       color:var(--gold);
       font-size:10px;
-      letter-spacing:.2em;
-      padding-top:2px;
+      letter-spacing:.22em;
+      padding-top:3px;
     }
-
-    a{color:inherit;text-decoration:none}
-
-    .main-actions{
+    .actions{
+      padding:0 18px 22px;
       display:grid;
       gap:12px;
-      margin-top:22px;
     }
-
     button,.btn{
-      appearance:none;
-      border:none;
-      width:100%;
-      min-height:55px;
+      min-height:56px;
       border-radius:999px;
+      border:0;
       display:flex;
       align-items:center;
       justify-content:center;
       font:13px var(--sans);
-      letter-spacing:.14em;
+      letter-spacing:.15em;
       cursor:pointer;
     }
-
     .primary{
-      background:#14120f;
       color:white;
-      box-shadow:0 18px 40px rgba(0,0,0,.18);
+      background:#15120f;
+      box-shadow:0 18px 36px rgba(0,0,0,.2);
     }
-
-    .secondary{
-      background:linear-gradient(135deg,#b79b64,#8d713f);
+    .gold{
       color:white;
+      background:linear-gradient(135deg,#c4aa75,#82663a);
     }
-
-    .ghost{
-      background:rgba(255,255,255,.48);
-      color:var(--ink);
-      border:1px solid rgba(255,255,255,.7);
-    }
-
-    .mini-grid{
-      margin-top:14px;
+    .subgrid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:10px;
+      padding:0 18px 26px;
     }
-
-    .mini{
-      height:82px;
+    .sub{
+      height:78px;
       border-radius:20px;
-      background:rgba(255,255,255,.44);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:7px;
+      background:rgba(255,255,255,.48);
+      display:grid;
+      place-items:center;
       font:11px var(--sans);
-      box-shadow:0 12px 28px rgba(0,0,0,.05);
+      color:#211d18;
+      box-shadow:0 10px 24px rgba(0,0,0,.05);
     }
-
-    .mini span{
-      font-size:22px;
-      line-height:1;
-    }
-
-    .quiet{
-      margin-top:28px;
-      padding:28px 20px;
-      border-radius:28px;
+    .quote{
+      margin-top:30px;
+      max-width:430px;
+      margin-left:auto;
+      margin-right:auto;
+      padding:36px 24px;
+      color:white;
+      border-radius:32px;
+      text-align:center;
       background:
-        linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.62)),
+        linear-gradient(rgba(0,0,0,.44),rgba(0,0,0,.72)),
         url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop")
         center/cover;
-      color:white;
-      text-align:center;
+      box-shadow:0 22px 60px rgba(0,0,0,.22);
     }
-
-    .quiet p{
+    .quote p{
       margin:0;
-      font-size:16px;
-      line-height:2;
-      letter-spacing:.16em;
+      line-height:2.1;
+      letter-spacing:.18em;
     }
-
     footer{
-      padding:24px;
+      padding:28px;
       text-align:center;
-      font:10px var(--sans);
       color:var(--muted);
-      letter-spacing:.2em;
-      background:var(--paper2);
+      font:10px var(--sans);
+      letter-spacing:.22em;
     }
-
     @media(min-width:720px){
-      body{padding:42px 0}
-      .wrap{border-radius:36px;min-height:auto}
+      .hero,.profile-wrap{max-width:460px;margin:auto}
     }
   </style>
 </head>
-
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="brand">
-        <div class="jp">還日堂</div>
-        <div class="en">KANJITSUDO</div>
-      </div>
-      <div class="mark">還</div>
-      <div class="vertical">日常に、還る場所。</div>
-      <h2 class="hero-title">還日堂</h2>
-    </section>
-
-    <section class="card">
-      <div class="profile">
+  <section class="hero">
+    <div class="brand">
+      <div class="brand-jp">還日堂</div>
+      <div class="brand-en">KANJITSUDO</div>
+    </div>
+    <div class="seal">還</div>
+    <div class="vertical-copy">日常に、還る場所。</div>
+    <h2 class="hero-title">還日堂</h2>
+    <div class="scroll">SCROLL</div>
+  </section>
+  <section class="profile-wrap">
+    <div class="card">
+      <div class="card-head">
         <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Kazuma">
         <div>
           <h1>Kazuma</h1>
-          <div class="role">還日堂 主宰 / KANJITSUDO</div>
+          <div class="role">還日堂 主宰<br>KANJITSUDO</div>
         </div>
       </div>
-
-      <p class="statement">
+      <div class="message">
         ご縁をいただきありがとうございます。<br>
-        連絡先・所在地・SNSはこちらにまとめています。
-      </p>
-
-      <div class="info">
-        <div class="row">
+        連絡先・所在地・SNSをこちらにまとめています。
+      </div>
+      <div class="meishi">
+        <div class="line">
           <div class="label">TEL</div>
           <a href="tel:09012345678">090-1234-5678</a>
         </div>
-        <div class="row">
+        <div class="line">
           <div class="label">MAIL</div>
           <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
         </div>
-        <div class="row">
+        <div class="line">
           <div class="label">WEB</div>
-          <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
+          <a href="https://kanjitsudo.jp">kanjitsudo.jp</a>
         </div>
-        <div class="row">
+        <div class="line">
           <div class="label">ADDRESS</div>
           <div>東京都渋谷区〇〇 1-2-3</div>
         </div>
       </div>
-
-      <div class="main-actions">
+      <div class="actions">
         <button class="primary" onclick="saveContact()">電話帳に登録する</button>
-        <a class="btn secondary" href="tel:09012345678">電話をかける</a>
-        <a class="btn ghost" href="mailto:info@kanjitsudo.jp">メールを送る</a>
+        <a class="btn gold" href="tel:09012345678">電話をかける</a>
       </div>
-
-      <div class="mini-grid">
-        <a class="mini" href="https://instagram.com/" target="_blank">
-          <span>◎</span>Instagram
-        </a>
-        <a class="mini" href="https://line.me/" target="_blank">
-          <span>◉</span>LINE
-        </a>
-        <a class="mini" href="https://maps.google.com/" target="_blank">
-          <span>⌖</span>Map
-        </a>
+      <div class="subgrid">
+        <a class="sub" href="mailto:info@kanjitsudo.jp">MAIL</a>
+        <a class="sub" href="https://instagram.com/" target="_blank">INSTAGRAM</a>
+        <a class="sub" href="https://maps.google.com/" target="_blank">MAP</a>
       </div>
-
-      <div class="quiet">
-        <p>還ることは、進むこと。<br>静けさの中に、豊かさがある。</p>
-      </div>
-    </section>
-
+    </div>
+    <div class="quote">
+      <p>還ることは、進むこと。<br>静けさの中に、豊かさがある。</p>
+    </div>
     <footer>© KANJITSUDO</footer>
-  </main>
-
+  </section>
   <script>
     function saveContact(){
       const vcard = `BEGIN:VCARD
@@ -372,7 +320,6 @@ URL:https://kanjitsudo.jp
 ADR;TYPE=WORK:;;東京都渋谷区〇〇 1-2-3;;;;
 NOTE:還日堂 / KANJITSUDO
 END:VCARD`;
-
       const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
