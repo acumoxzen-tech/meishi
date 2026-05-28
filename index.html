@@ -3,308 +3,574 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kazuma | 還日堂</title>
+
+<title>山中 一馬 | 還日堂</title>
+
+<meta name="description" content="Kazuma Yamanaka / 還日堂">
+<meta property="og:title" content="山中 一馬 | 還日堂">
+<meta property="og:description" content="日常に、還る場所。">
+<meta property="og:type" content="website">
 
 <style>
+
 :root{
-  --paper:#f7f4ed;
-  --paper2:#ebe5da;
+  --paper:#f6f1e7;
+  --paper2:#e8dfd0;
+
   --ink:#17130f;
-  --soft:#8d867b;
-  --line:rgba(23,19,15,.16);
-  --red:#9b2e28;
-  --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --soft:#8b8377;
+
+  --line:rgba(23,19,15,.12);
+
+  --red:#98352d;
+
+  --serif:
+  "Yu Mincho",
+  "Hiragino Mincho ProN",
+  "Noto Serif JP",
+  serif;
+
+  --sans:
+  -apple-system,
+  BlinkMacSystemFont,
+  "Helvetica Neue",
+  Arial,
+  sans-serif;
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+}
 
 body{
+
   margin:0;
+
   min-height:100svh;
+
   background:
-    radial-gradient(circle at 50% 0%,#8b8378 0,#50483f 38%,#211d19 100%);
+  radial-gradient(circle at top,#8c8478 0,#4f483f 38%,#1f1b18 100%);
+
   color:var(--ink);
+
   font-family:var(--serif);
+
   letter-spacing:.05em;
 }
 
 .wrap{
+
   width:min(440px,100%);
+
   min-height:100svh;
+
   margin:auto;
+
   padding:18px;
 }
 
 .card{
-  min-height:calc(100svh - 36px);
+
   position:relative;
+
   overflow:hidden;
-  border-radius:2px;
+
+  min-height:calc(100svh - 36px);
+
+  padding:34px 30px 120px;
+
   background:
-    linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.24)),
-    radial-gradient(circle at 78% 18%,rgba(255,255,255,.8),transparent 26%),
-    var(--paper);
+  radial-gradient(circle at 20% 0%,rgba(255,255,255,.9),transparent 35%),
+  linear-gradient(180deg,var(--paper),var(--paper2));
+
   box-shadow:
-    0 40px 90px rgba(0,0,0,.38),
-    inset 0 0 0 1px rgba(255,255,255,.8);
-  padding:34px 30px;
+  0 40px 100px rgba(0,0,0,.42),
+  inset 0 0 0 1px rgba(255,255,255,.72);
+
+  isolation:isolate;
 }
 
 .card::before{
+
   content:"";
+
   position:absolute;
   inset:0;
-  opacity:.22;
+
+  opacity:.16;
+
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+
   mix-blend-mode:multiply;
+
   pointer-events:none;
 }
 
-.emboss{
+/* 背景ロゴ */
+
+.bg-logo{
+
   position:absolute;
+
+  z-index:1;
+
+  right:-18px;
+  top:26px;
+
+  width:390px;
+
+  opacity:.24;
+
+  filter:
+  invert(1)
+  brightness(.16)
+  contrast(1.8)
+  saturate(.6);
+
+  mix-blend-mode:multiply;
+
+  pointer-events:none;
+  user-select:none;
+
+  /* デボス感 */
+
+  box-shadow:
+    -8px -8px 14px rgba(255,255,255,.82),
+    10px 10px 18px rgba(0,0,0,.08);
+
+  border-radius:12px;
+}
+
+/* 円デボス */
+
+.emboss{
+
+  position:absolute;
+
+  z-index:1;
+
   right:-62px;
   top:74px;
+
   width:310px;
   height:310px;
-  border:3px solid rgba(0,0,0,.055);
-  border-radius:50%;
-  box-shadow:
-    inset 4px 4px 8px rgba(255,255,255,.9),
-    inset -4px -4px 9px rgba(0,0,0,.07);
-}
 
-.emboss::before{
-  content:"";
-  position:absolute;
-  left:104px;
-  top:36px;
-  width:2px;
-  height:220px;
-  background:rgba(0,0,0,.08);
-  box-shadow:
-    2px 0 4px rgba(255,255,255,.7),
-    -2px 0 4px rgba(0,0,0,.05);
-}
-
-.emboss::after{
-  content:"";
-  position:absolute;
-  left:74px;
-  top:115px;
-  width:130px;
-  height:100px;
-  border-left:3px solid rgba(0,0,0,.055);
   border-radius:50%;
-  transform:rotate(-28deg);
+
+  border:2px solid rgba(0,0,0,.05);
+
+  box-shadow:
+  inset 4px 4px 10px rgba(255,255,255,.9),
+  inset -4px -4px 10px rgba(0,0,0,.04);
+
+  opacity:.72;
 }
 
 .top{
+
   position:relative;
+
   z-index:2;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:flex-start;
 }
 
 .logo{
+
   writing-mode:vertical-rl;
+
   font-size:28px;
+
   line-height:1.9;
+
   letter-spacing:.28em;
 }
 
 .kana{
+
   margin-top:8px;
+
   writing-mode:vertical-rl;
+
   font:10px var(--sans);
+
   letter-spacing:.34em;
+
   color:var(--soft);
 }
 
 .seal{
+
   width:24px;
   height:24px;
+
   border:1px solid var(--red);
+
   color:var(--red);
+
   display:grid;
   place-items:center;
+
   font-size:13px;
-  opacity:.9;
+
+  opacity:.92;
 }
 
+/* 名前 */
+
 .name{
+
   position:relative;
+
   z-index:2;
+
   margin-top:185px;
 }
 
-.name h1{
-  margin:0 0 8px;
+.jp-name{
+
+  margin:0;
+
+  font-size:38px;
+
   font-weight:400;
-  font-size:27px;
-  letter-spacing:.04em;
+
+  letter-spacing:.12em;
+
+  line-height:1.5;
 }
 
-.name p{
-  margin:0;
-  font-size:13px;
+.en-name{
+
+  margin-top:12px;
+
+  font:12px var(--sans);
+
+  letter-spacing:.24em;
+
   color:var(--soft);
 }
 
+.role{
+
+  margin-top:14px;
+
+  font:12px var(--sans);
+
+  color:var(--soft);
+
+  letter-spacing:.14em;
+}
+
+/* 情報 */
+
 .info{
+
   position:relative;
+
   z-index:2;
+
   margin-top:42px;
+
   display:grid;
+
   gap:15px;
+
   font:14px var(--sans);
+
   letter-spacing:.02em;
 }
 
 .info a{
+
   color:inherit;
+
   text-decoration:none;
 }
 
+/* アクション */
+
 .actions{
+
   position:relative;
+
   z-index:2;
+
   margin-top:46px;
+
   display:grid;
+
   gap:13px;
 }
 
-button,.link{
+button,
+.link{
+
   width:100%;
+
   min-height:52px;
+
   border:1px solid var(--line);
-  background:rgba(255,255,255,.22);
+
+  background:rgba(255,255,255,.26);
+
   color:var(--ink);
-  font:12px var(--sans);
-  letter-spacing:.18em;
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   padding:0 18px;
+
   text-decoration:none;
+
+  font:12px var(--sans);
+
+  letter-spacing:.18em;
+
   cursor:pointer;
+
+  backdrop-filter:blur(8px);
+
+  transition:.25s ease;
 }
 
-button{
-  font-weight:500;
+button:hover,
+.link:hover{
+
+  background:rgba(255,255,255,.5);
 }
 
 .arrow{
+
   color:var(--soft);
 }
 
+/* フッター */
+
 .foot{
+
   position:absolute;
+
   left:30px;
   right:30px;
   bottom:28px;
+
   z-index:2;
+
   display:flex;
+
   justify-content:space-between;
-  align-items:end;
+
+  align-items:flex-end;
+
   border-top:1px solid var(--line);
+
   padding-top:18px;
 }
 
 .en{
+
   font-size:18px;
+
   letter-spacing:.42em;
 }
 
 .copy{
+
   writing-mode:vertical-rl;
-  font-size:11px;
+
+  font-size:10px;
+
   color:var(--soft);
+
   letter-spacing:.18em;
 }
 
 @media(min-width:700px){
-  body{padding:38px 0}
-  .wrap{min-height:auto}
-  .card{min-height:760px}
+
+  body{
+    padding:40px 0;
+  }
+
+  .card{
+    min-height:760px;
+  }
 }
+
 </style>
 </head>
 
 <body>
+
 <main class="wrap">
-  <section class="card">
-    <div class="emboss"></div>
 
-    <div class="top">
-      <div>
-        <div class="logo">還日堂</div>
-        <div class="kana">KANJITSUDŌ</div>
-      </div>
-      <div class="seal">還</div>
+<section class="card">
+
+<!-- 背景ロゴ -->
+
+<img
+class="bg-logo"
+src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
+alt="">
+
+<div class="emboss"></div>
+
+<div class="top">
+
+  <div>
+
+    <div class="logo">
+      還日堂
     </div>
 
-    <div class="name">
-      <h1>Kazuma ○○</h1>
-      <p>Founder / Therapist</p>
+    <div class="kana">
+      KANJITSUDŌ
     </div>
 
-    <div class="info">
-      <a href="tel:+819012345678">+81 90 1234 5678</a>
-      <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
-      <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
-      <span>Tokyo, Japan</span>
-    </div>
+  </div>
 
-    <div class="actions">
-      <button onclick="saveContact()">
-        電話帳に登録する <span class="arrow">→</span>
-      </button>
-      <a class="link" href="tel:+819012345678">
-        電話をかける <span class="arrow">→</span>
-      </a>
-      <a class="link" href="mailto:info@kanjitsudo.jp">
-        メールを送る <span class="arrow">→</span>
-      </a>
-      <a class="link" href="https://instagram.com/" target="_blank">
-        Instagram <span class="arrow">→</span>
-      </a>
-    </div>
+  <div class="seal">
+    還
+  </div>
 
-    <div class="foot">
-      <div class="en">KANJITSUDŌ</div>
-      <div class="copy">日常に、還る場所。</div>
-    </div>
-  </section>
+</div>
+
+<div class="name">
+
+  <h1 class="jp-name">
+    山中 一馬
+  </h1>
+
+  <div class="en-name">
+    Kazuma Yamanaka
+  </div>
+
+  <div class="role">
+    Founder / Therapist
+  </div>
+
+</div>
+
+<div class="info">
+
+  <a href="tel:07083058788">
+    070-8305-8788
+  </a>
+
+  <a href="mailto:info@kanjitsudo.jp">
+    info@kanjitsudo.jp
+  </a>
+
+  <a href="https://kanjitsudo.jp" target="_blank">
+    kanjitsudo.jp
+  </a>
+
+  <span>
+    Tokyo, Japan
+  </span>
+
+</div>
+
+<div class="actions">
+
+  <button onclick="saveContact()">
+    電話帳に登録する
+    <span class="arrow">→</span>
+  </button>
+
+  <a
+  class="link"
+  href="https://instagram.com/"
+  target="_blank">
+
+    Instagram
+
+    <span class="arrow">→</span>
+
+  </a>
+
+  <a
+  class="link"
+  href="https://line.me/"
+  target="_blank">
+
+    LINE
+
+    <span class="arrow">→</span>
+
+  </a>
+
+</div>
+
+<div class="foot">
+
+  <div class="en">
+    KANJITSUDŌ
+  </div>
+
+  <div class="copy">
+    日常に、還る場所。
+  </div>
+
+</div>
+
+</section>
+
 </main>
 
 <script>
+
 function saveContact(){
-  const vcard = `BEGIN:VCARD
+
+const vcard = `BEGIN:VCARD
 VERSION:3.0
-N:○○;Kazuma;;;
-FN:Kazuma ○○
+N:Yamanaka;Kazuma;;;
+FN:Kazuma Yamanaka
 ORG:還日堂
 TITLE:Founder / Therapist
-TEL;TYPE=CELL:+819012345678
+TEL;TYPE=CELL:07083058788
 EMAIL:info@kanjitsudo.jp
 URL:https://kanjitsudo.jp
 ADR;TYPE=WORK:;;;;Tokyo;;Japan
 NOTE:還日堂 / KANJITSUDŌ
 END:VCARD`;
 
-  const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "kazuma-kanjitsudo.vcf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+const blob = new Blob(
+[vcard],
+{type:"text/vcard;charset=utf-8"}
+);
+
+const url = URL.createObjectURL(blob);
+
+const a = document.createElement("a");
+
+a.href = url;
+
+a.download = "kazuma-yamanaka.vcf";
+
+document.body.appendChild(a);
+
+a.click();
+
+document.body.removeChild(a);
+
+URL.revokeObjectURL(url);
+
 }
+
 </script>
+
 </body>
 </html>
