@@ -1,250 +1,316 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Kazuma | 還日堂</title>
-  <meta name="description" content="Kazuma / 還日堂 のデジタル名刺" />
+  <meta name="description" content="Kazuma / 還日堂のデジタル名刺">
+  <meta property="og:title" content="Kazuma | 還日堂">
+  <meta property="og:description" content="日常に、還る場所。">
+  <meta property="og:type" content="website">
 
   <style>
     :root{
-      --ink:#161410;
-      --paper:#f4efe6;
-      --paper2:#e8dfd0;
-      --gold:#aa8950;
-      --muted:#7b7468;
-      --line:rgba(22,20,16,.14);
+      --bg:#0b0b08;
+      --paper:#f3eee3;
+      --paper2:#e5dccd;
+      --ink:#17130f;
+      --muted:#7c7468;
+      --gold:#b59a65;
+      --line:rgba(23,19,15,.14);
       --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
       --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
     }
 
     *{box-sizing:border-box}
-
     body{
       margin:0;
-      min-height:100vh;
-      background:
-        radial-gradient(circle at top,#fffaf0 0,#f3eadc 42%,#ded2c2 100%);
       color:var(--ink);
+      background:
+        radial-gradient(circle at 50% 0%,#4a4135 0,#181612 34%,#050504 100%);
       font-family:var(--serif);
       letter-spacing:.04em;
     }
 
-    .page{
-      width:min(430px,100%);
-      min-height:100vh;
+    .wrap{
+      width:min(440px,100%);
+      min-height:100svh;
       margin:auto;
       background:var(--paper);
-      box-shadow:0 30px 80px rgba(0,0,0,.18);
+      box-shadow:0 40px 100px rgba(0,0,0,.45);
       overflow:hidden;
     }
 
     .hero{
-      height:270px;
+      height:360px;
       position:relative;
+      color:white;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.74)),
-        url("./hero.png") center/cover;
+        linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.82)),
+        url("https://images.unsplash.com/photo-1602928298849-325cec8771c0?q=80&w=1200&auto=format&fit=crop")
+        center/cover;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 42%,transparent 0 28%,rgba(0,0,0,.35) 72%),
+        linear-gradient(90deg,rgba(0,0,0,.62),transparent 48%,rgba(0,0,0,.32));
+      pointer-events:none;
     }
 
     .brand{
       position:absolute;
-      top:24px;
+      z-index:2;
+      top:26px;
       left:24px;
-      color:white;
     }
 
-    .brand-jp{
-      font-size:24px;
+    .brand .jp{
+      font-size:25px;
       letter-spacing:.24em;
     }
 
-    .brand-en{
-      margin-top:6px;
+    .brand .en{
+      margin-top:7px;
       font:10px var(--sans);
-      letter-spacing:.32em;
-      opacity:.75;
+      letter-spacing:.34em;
+      opacity:.72;
     }
 
-    .copy{
+    .mark{
       position:absolute;
+      z-index:2;
+      right:25px;
+      top:28px;
+      width:48px;
+      height:48px;
+      border:1px solid rgba(255,255,255,.72);
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-size:20px;
+    }
+
+    .vertical{
+      position:absolute;
+      z-index:2;
       left:28px;
-      bottom:30px;
+      bottom:44px;
       writing-mode:vertical-rl;
-      color:white;
       font-size:15px;
-      line-height:2;
-      letter-spacing:.22em;
+      line-height:2.1;
+      letter-spacing:.25em;
+    }
+
+    .hero-title{
+      position:absolute;
+      z-index:2;
+      right:34px;
+      bottom:38px;
+      writing-mode:vertical-rl;
+      font-size:42px;
+      letter-spacing:.25em;
+      font-weight:400;
+    }
+
+    .card{
+      position:relative;
+      padding:0 24px 30px;
+      background:
+        radial-gradient(circle at 30% 0%,rgba(255,255,255,.9),transparent 34%),
+        linear-gradient(180deg,var(--paper),var(--paper2));
     }
 
     .profile{
-      padding:0 26px 26px;
-      position:relative;
+      display:grid;
+      grid-template-columns:98px 1fr;
+      gap:20px;
+      align-items:end;
+      padding-top:28px;
     }
 
     .avatar{
-      width:112px;
-      height:112px;
+      width:98px;
+      height:98px;
       border-radius:50%;
       object-fit:cover;
-      border:5px solid var(--paper);
-      margin-top:-56px;
-      box-shadow:0 12px 28px rgba(0,0,0,.16);
       background:#ddd;
+      box-shadow:0 14px 35px rgba(0,0,0,.16);
+      border:4px solid rgba(255,255,255,.68);
     }
 
     h1{
-      margin:20px 0 4px;
-      font-size:31px;
+      margin:0 0 6px;
       font-weight:400;
+      font-size:30px;
       letter-spacing:.04em;
     }
 
     .role{
+      font:12px var(--sans);
       color:var(--muted);
-      font-size:13px;
-      margin-bottom:18px;
+      letter-spacing:.1em;
     }
 
-    .message{
+    .statement{
+      margin:26px 0 22px;
+      padding-left:16px;
+      border-left:1px solid var(--gold);
       font-size:14px;
-      line-height:2;
-      margin:0 0 24px;
+      line-height:2.1;
     }
 
     .info{
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      padding:18px 0;
       display:grid;
-      gap:13px;
+      gap:1px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      background:var(--line);
     }
 
     .row{
+      background:rgba(255,255,255,.42);
+      padding:15px 16px;
       display:grid;
-      grid-template-columns:76px 1fr;
+      grid-template-columns:74px 1fr;
       gap:10px;
-      align-items:start;
-      font-family:var(--sans);
-      font-size:14px;
-      letter-spacing:.02em;
+      font:14px var(--sans);
     }
 
     .label{
       color:var(--gold);
-      font-size:11px;
-      letter-spacing:.16em;
-      text-transform:uppercase;
+      font-size:10px;
+      letter-spacing:.2em;
       padding-top:2px;
     }
 
-    .row a{
-      color:var(--ink);
-      text-decoration:none;
-      word-break:break-all;
-    }
+    a{color:inherit;text-decoration:none}
 
-    .buttons{
+    .main-actions{
       display:grid;
       gap:12px;
-      padding:24px 0 10px;
+      margin-top:22px;
     }
 
-    .btn{
-      height:54px;
+    button,.btn{
+      appearance:none;
+      border:none;
+      width:100%;
+      min-height:55px;
       border-radius:999px;
-      border:1px solid var(--line);
       display:flex;
-      justify-content:center;
       align-items:center;
-      gap:10px;
-      text-decoration:none;
+      justify-content:center;
+      font:13px var(--sans);
+      letter-spacing:.14em;
+      cursor:pointer;
+    }
+
+    .primary{
+      background:#14120f;
+      color:white;
+      box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+
+    .secondary{
+      background:linear-gradient(135deg,#b79b64,#8d713f);
+      color:white;
+    }
+
+    .ghost{
+      background:rgba(255,255,255,.48);
       color:var(--ink);
-      font:14px var(--sans);
-      letter-spacing:.08em;
-      background:rgba(255,255,255,.42);
-      box-shadow:0 12px 26px rgba(0,0,0,.05);
+      border:1px solid rgba(255,255,255,.7);
     }
 
-    .btn.primary{
-      background:var(--ink);
-      color:white;
-      border-color:var(--ink);
-    }
-
-    .btn.gold{
-      color:white;
-      background:linear-gradient(135deg,#b99b64,#8e713e);
-      border-color:transparent;
-    }
-
-    .links{
+    .mini-grid{
+      margin-top:14px;
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:10px;
-      margin-top:12px;
     }
 
     .mini{
-      min-height:72px;
-      border-radius:18px;
-      background:rgba(255,255,255,.45);
-      border:1px solid rgba(255,255,255,.55);
+      height:82px;
+      border-radius:20px;
+      background:rgba(255,255,255,.44);
       display:flex;
       flex-direction:column;
-      justify-content:center;
       align-items:center;
+      justify-content:center;
       gap:7px;
-      text-decoration:none;
-      color:var(--ink);
       font:11px var(--sans);
-      box-shadow:0 10px 22px rgba(0,0,0,.04);
+      box-shadow:0 12px 28px rgba(0,0,0,.05);
     }
 
-    .mini b{
-      font-size:20px;
-      font-weight:400;
+    .mini span{
+      font-size:22px;
+      line-height:1;
+    }
+
+    .quiet{
+      margin-top:28px;
+      padding:28px 20px;
+      border-radius:28px;
+      background:
+        linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.62)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop")
+        center/cover;
+      color:white;
+      text-align:center;
+    }
+
+    .quiet p{
+      margin:0;
+      font-size:16px;
+      line-height:2;
+      letter-spacing:.16em;
     }
 
     footer{
-      padding:26px;
+      padding:24px;
       text-align:center;
       font:10px var(--sans);
-      letter-spacing:.18em;
       color:var(--muted);
+      letter-spacing:.2em;
+      background:var(--paper2);
     }
 
-    @media (min-width:700px){
-      body{
-        padding:42px 0;
-      }
-      .page{
-        border-radius:34px;
-        min-height:auto;
-      }
+    @media(min-width:720px){
+      body{padding:42px 0}
+      .wrap{border-radius:36px;min-height:auto}
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
+  <main class="wrap">
     <section class="hero">
       <div class="brand">
-        <div class="brand-jp">還日堂</div>
-        <div class="brand-en">KANJITSUDO</div>
+        <div class="jp">還日堂</div>
+        <div class="en">KANJITSUDO</div>
       </div>
-      <div class="copy">日常に、還る場所。</div>
+      <div class="mark">還</div>
+      <div class="vertical">日常に、還る場所。</div>
+      <h2 class="hero-title">還日堂</h2>
     </section>
 
-    <section class="profile">
-      <img class="avatar" src="./profile.png" alt="Kazuma">
+    <section class="card">
+      <div class="profile">
+        <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Kazuma">
+        <div>
+          <h1>Kazuma</h1>
+          <div class="role">還日堂 主宰 / KANJITSUDO</div>
+        </div>
+      </div>
 
-      <h1>Kazuma</h1>
-      <div class="role">還日堂 主宰 / KANJITSUDO</div>
-
-      <p class="message">
+      <p class="statement">
         ご縁をいただきありがとうございます。<br>
-        お問い合わせ・ご連絡は下記よりお願いいたします。
+        連絡先・所在地・SNSはこちらにまとめています。
       </p>
 
       <div class="info">
@@ -252,48 +318,44 @@
           <div class="label">TEL</div>
           <a href="tel:09012345678">090-1234-5678</a>
         </div>
-
         <div class="row">
           <div class="label">MAIL</div>
           <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
         </div>
-
         <div class="row">
           <div class="label">WEB</div>
           <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
         </div>
-
         <div class="row">
           <div class="label">ADDRESS</div>
           <div>東京都渋谷区〇〇 1-2-3</div>
         </div>
       </div>
 
-      <div class="buttons">
-        <button class="btn primary" onclick="saveContact()">電話帳に登録する</button>
-        <a class="btn gold" href="tel:09012345678">電話をかける</a>
-        <a class="btn" href="mailto:info@kanjitsudo.jp">メールを送る</a>
+      <div class="main-actions">
+        <button class="primary" onclick="saveContact()">電話帳に登録する</button>
+        <a class="btn secondary" href="tel:09012345678">電話をかける</a>
+        <a class="btn ghost" href="mailto:info@kanjitsudo.jp">メールを送る</a>
       </div>
 
-      <div class="links">
+      <div class="mini-grid">
         <a class="mini" href="https://instagram.com/" target="_blank">
-          <b>◎</b>
-          Instagram
+          <span>◎</span>Instagram
         </a>
         <a class="mini" href="https://line.me/" target="_blank">
-          <b>◉</b>
-          LINE
+          <span>◉</span>LINE
         </a>
         <a class="mini" href="https://maps.google.com/" target="_blank">
-          <b>⌖</b>
-          Map
+          <span>⌖</span>Map
         </a>
+      </div>
+
+      <div class="quiet">
+        <p>還ることは、進むこと。<br>静けさの中に、豊かさがある。</p>
       </div>
     </section>
 
-    <footer>
-      © KANJITSUDO
-    </footer>
+    <footer>© KANJITSUDO</footer>
   </main>
 
   <script>
@@ -311,16 +373,14 @@ ADR;TYPE=WORK:;;東京都渋谷区〇〇 1-2-3;;;;
 NOTE:還日堂 / KANJITSUDO
 END:VCARD`;
 
-      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
       const url = URL.createObjectURL(blob);
-
       const a = document.createElement("a");
       a.href = url;
       a.download = "kazuma-kanjitsudo.vcf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-
       URL.revokeObjectURL(url);
     }
   </script>
