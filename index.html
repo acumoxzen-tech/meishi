@@ -1,504 +1,310 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Kazuma | Digital Meishi</title>
-  <meta name="description" content="Kazuma のデジタル名刺">
-  <meta property="og:title" content="Kazuma">
-  <meta property="og:description" content="Digital Meishi">
-  <meta property="og:type" content="website">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kazuma | 還日堂</title>
 
-  <style>
-    :root{
-      --sumi:#080807;
-      --ink:#171410;
-      --paper:#f2eadc;
-      --paper2:#dfd4c2;
-      --stone:#b8aa94;
-      --muted:#7b7163;
-      --red:#8f2e22;
-      --line:rgba(23,20,16,.14);
-      --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
-      --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-    }
+<style>
+:root{
+  --paper:#f7f4ed;
+  --paper2:#ebe5da;
+  --ink:#17130f;
+  --soft:#8d867b;
+  --line:rgba(23,19,15,.16);
+  --red:#9b2e28;
+  --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
 
-    *{box-sizing:border-box}
+*{box-sizing:border-box}
 
-    html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100svh;
+  background:
+    radial-gradient(circle at 50% 0%,#8b8378 0,#50483f 38%,#211d19 100%);
+  color:var(--ink);
+  font-family:var(--serif);
+  letter-spacing:.05em;
+}
 
-    body{
-      margin:0;
-      background:#050504;
-      color:var(--ink);
-      font-family:var(--serif);
-      letter-spacing:.05em;
-    }
+.wrap{
+  width:min(440px,100%);
+  min-height:100svh;
+  margin:auto;
+  padding:18px;
+}
 
-    a{color:inherit;text-decoration:none}
+.card{
+  min-height:calc(100svh - 36px);
+  position:relative;
+  overflow:hidden;
+  border-radius:2px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.24)),
+    radial-gradient(circle at 78% 18%,rgba(255,255,255,.8),transparent 26%),
+    var(--paper);
+  box-shadow:
+    0 40px 90px rgba(0,0,0,.38),
+    inset 0 0 0 1px rgba(255,255,255,.8);
+  padding:34px 30px;
+}
 
-    .phone{
-      width:min(460px,100%);
-      min-height:100svh;
-      margin:auto;
-      background:
-        radial-gradient(circle at 20% 0%,rgba(255,255,255,.9),transparent 35%),
-        linear-gradient(180deg,var(--paper),var(--paper2));
-      overflow:hidden;
-      box-shadow:0 44px 120px rgba(0,0,0,.5);
-      position:relative;
-    }
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.22;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+  pointer-events:none;
+}
 
-    .hero{
-      min-height:100svh;
-      position:relative;
-      background:
-        linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.86)),
-        url("https://images.unsplash.com/photo-1528360983277-13d401cdc186?q=80&w=1400&auto=format&fit=crop")
-        center/cover;
-      color:white;
-      overflow:hidden;
-    }
+.emboss{
+  position:absolute;
+  right:-62px;
+  top:74px;
+  width:310px;
+  height:310px;
+  border:3px solid rgba(0,0,0,.055);
+  border-radius:50%;
+  box-shadow:
+    inset 4px 4px 8px rgba(255,255,255,.9),
+    inset -4px -4px 9px rgba(0,0,0,.07);
+}
 
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 52% 42%,rgba(255,255,255,.13),transparent 21%),
-        linear-gradient(90deg,rgba(0,0,0,.78),transparent 58%,rgba(0,0,0,.42));
-      z-index:1;
-    }
+.emboss::before{
+  content:"";
+  position:absolute;
+  left:104px;
+  top:36px;
+  width:2px;
+  height:220px;
+  background:rgba(0,0,0,.08);
+  box-shadow:
+    2px 0 4px rgba(255,255,255,.7),
+    -2px 0 4px rgba(0,0,0,.05);
+}
 
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:-30%;
-      background:
-        repeating-linear-gradient(
-          90deg,
-          rgba(255,255,255,.025) 0,
-          rgba(255,255,255,.025) 1px,
-          transparent 1px,
-          transparent 12px
-        );
-      transform:rotate(-11deg);
-      opacity:.38;
-      z-index:1;
-    }
+.emboss::after{
+  content:"";
+  position:absolute;
+  left:74px;
+  top:115px;
+  width:130px;
+  height:100px;
+  border-left:3px solid rgba(0,0,0,.055);
+  border-radius:50%;
+  transform:rotate(-28deg);
+}
 
-    .top{
-      position:absolute;
-      z-index:2;
-      top:28px;
-      left:26px;
-      right:26px;
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      font-family:var(--sans);
-      font-size:10px;
-      letter-spacing:.26em;
-      color:rgba(255,255,255,.68);
-    }
+.top{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+}
 
-    .small-kanji{
-      writing-mode:vertical-rl;
-      font-family:var(--serif);
-      font-size:13px;
-      letter-spacing:.34em;
-      color:rgba(255,255,255,.76);
-    }
+.logo{
+  writing-mode:vertical-rl;
+  font-size:28px;
+  line-height:1.9;
+  letter-spacing:.28em;
+}
 
-    .enso{
-      position:absolute;
-      z-index:2;
-      width:210px;
-      height:210px;
-      border:1.4px solid rgba(255,255,255,.44);
-      border-left-color:rgba(255,255,255,.08);
-      border-bottom-color:rgba(255,255,255,.2);
-      border-radius:50%;
-      right:-58px;
-      top:20%;
-      transform:rotate(-24deg);
-    }
+.kana{
+  margin-top:8px;
+  writing-mode:vertical-rl;
+  font:10px var(--sans);
+  letter-spacing:.34em;
+  color:var(--soft);
+}
 
-    .vertical-main{
-      position:absolute;
-      z-index:2;
-      right:44px;
-      top:23%;
-      writing-mode:vertical-rl;
-      font-size:58px;
-      font-weight:400;
-      line-height:1.05;
-      letter-spacing:.26em;
-    }
+.seal{
+  width:24px;
+  height:24px;
+  border:1px solid var(--red);
+  color:var(--red);
+  display:grid;
+  place-items:center;
+  font-size:13px;
+  opacity:.9;
+}
 
-    .vertical-copy{
-      position:absolute;
-      z-index:2;
-      left:34px;
-      bottom:110px;
-      writing-mode:vertical-rl;
-      font-size:15px;
-      line-height:2.4;
-      letter-spacing:.28em;
-      color:rgba(255,255,255,.86);
-    }
+.name{
+  position:relative;
+  z-index:2;
+  margin-top:185px;
+}
 
-    .hero-meta{
-      position:absolute;
-      z-index:2;
-      left:30px;
-      bottom:38px;
-      font-family:var(--sans);
-      font-size:10px;
-      letter-spacing:.24em;
-      color:rgba(255,255,255,.55);
-      line-height:2;
-    }
+.name h1{
+  margin:0 0 8px;
+  font-weight:400;
+  font-size:27px;
+  letter-spacing:.04em;
+}
 
-    .content{
-      padding:32px 18px 48px;
-      position:relative;
-    }
+.name p{
+  margin:0;
+  font-size:13px;
+  color:var(--soft);
+}
 
-    .card{
-      margin-top:-82px;
-      position:relative;
-      z-index:5;
-      background:
-        linear-gradient(180deg,rgba(250,247,240,.92),rgba(237,229,216,.9));
-      border:1px solid rgba(255,255,255,.76);
-      border-radius:34px;
-      box-shadow:0 34px 90px rgba(0,0,0,.32);
-      backdrop-filter:blur(18px);
-      overflow:hidden;
-    }
+.info{
+  position:relative;
+  z-index:2;
+  margin-top:42px;
+  display:grid;
+  gap:15px;
+  font:14px var(--sans);
+  letter-spacing:.02em;
+}
 
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        radial-gradient(rgba(0,0,0,.06) .7px,transparent .7px);
-      background-size:7px 7px;
-      opacity:.18;
-      pointer-events:none;
-    }
+.info a{
+  color:inherit;
+  text-decoration:none;
+}
 
-    .inner{
-      position:relative;
-      z-index:1;
-      padding:30px 24px 26px;
-    }
+.actions{
+  position:relative;
+  z-index:2;
+  margin-top:46px;
+  display:grid;
+  gap:13px;
+}
 
-    .identity{
-      display:grid;
-      grid-template-columns:1fr 78px;
-      gap:18px;
-      align-items:start;
-    }
+button,.link{
+  width:100%;
+  min-height:52px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.22);
+  color:var(--ink);
+  font:12px var(--sans);
+  letter-spacing:.18em;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 18px;
+  text-decoration:none;
+  cursor:pointer;
+}
 
-    .name-jp{
-      writing-mode:vertical-rl;
-      font-size:42px;
-      font-weight:400;
-      letter-spacing:.22em;
-      line-height:1.2;
-      height:156px;
-    }
+button{
+  font-weight:500;
+}
 
-    .name-en{
-      margin-top:18px;
-      font:11px var(--sans);
-      letter-spacing:.3em;
-      color:var(--muted);
-    }
+.arrow{
+  color:var(--soft);
+}
 
-    .seal{
-      width:64px;
-      height:64px;
-      border-radius:18px;
-      border:1px solid rgba(143,46,34,.36);
-      color:var(--red);
-      display:grid;
-      place-items:center;
-      font-size:24px;
-      transform:rotate(4deg);
-      justify-self:end;
-      margin-top:6px;
-    }
+.foot{
+  position:absolute;
+  left:30px;
+  right:30px;
+  bottom:28px;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
 
-    .title{
-      margin-top:28px;
-      padding-top:22px;
-      border-top:1px solid var(--line);
-      font-size:14px;
-      line-height:2;
-      color:var(--muted);
-    }
+.en{
+  font-size:18px;
+  letter-spacing:.42em;
+}
 
-    .title b{
-      color:var(--ink);
-      font-weight:400;
-    }
+.copy{
+  writing-mode:vertical-rl;
+  font-size:11px;
+  color:var(--soft);
+  letter-spacing:.18em;
+}
 
-    .phrase{
-      margin:24px 0 26px;
-      padding:22px 20px;
-      border-radius:24px;
-      background:rgba(255,255,255,.38);
-      border:1px solid rgba(255,255,255,.66);
-      font-size:14px;
-      line-height:2.1;
-    }
-
-    .contact{
-      display:grid;
-      gap:0;
-      border-top:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      padding:8px 0;
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns:72px 1fr;
-      gap:14px;
-      padding:13px 0;
-      font-family:var(--sans);
-      font-size:14px;
-      letter-spacing:.02em;
-    }
-
-    .label{
-      color:var(--red);
-      font-size:10px;
-      letter-spacing:.22em;
-      padding-top:3px;
-    }
-
-    .actions{
-      display:grid;
-      gap:12px;
-      margin-top:24px;
-    }
-
-    button,.btn{
-      min-height:56px;
-      border-radius:999px;
-      border:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-family:var(--sans);
-      font-size:13px;
-      letter-spacing:.16em;
-      cursor:pointer;
-    }
-
-    .primary{
-      background:var(--sumi);
-      color:white;
-      box-shadow:0 18px 40px rgba(0,0,0,.2);
-    }
-
-    .ghost{
-      background:rgba(255,255,255,.44);
-      border:1px solid rgba(255,255,255,.76);
-      color:var(--ink);
-    }
-
-    .subnav{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      margin-top:12px;
-    }
-
-    .subnav a{
-      height:76px;
-      border-radius:20px;
-      background:rgba(255,255,255,.38);
-      display:grid;
-      place-items:center;
-      font-family:var(--sans);
-      font-size:11px;
-      letter-spacing:.14em;
-      box-shadow:0 10px 24px rgba(0,0,0,.05);
-    }
-
-    .zen-note{
-      margin-top:32px;
-      border-radius:32px;
-      overflow:hidden;
-      background:#0c0b09;
-      color:white;
-      position:relative;
-      box-shadow:0 26px 70px rgba(0,0,0,.25);
-    }
-
-    .zen-note::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.72)),
-        url("https://images.unsplash.com/photo-1584949091598-c31daaaa4aa9?q=80&w=1200&auto=format&fit=crop")
-        center/cover;
-      opacity:.86;
-    }
-
-    .zen-note .text{
-      position:relative;
-      z-index:1;
-      min-height:260px;
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:36px 24px;
-      font-size:16px;
-      line-height:2.3;
-      letter-spacing:.18em;
-    }
-
-    .signature{
-      margin-top:24px;
-      font-family:cursive;
-      font-size:36px;
-      letter-spacing:.02em;
-      color:rgba(255,255,255,.55);
-    }
-
-    footer{
-      padding:28px 0 0;
-      text-align:center;
-      font-family:var(--sans);
-      font-size:10px;
-      letter-spacing:.24em;
-      color:var(--muted);
-    }
-
-    @media(min-width:720px){
-      body{padding:42px 0}
-      .phone{border-radius:38px;min-height:auto}
-    }
-  </style>
+@media(min-width:700px){
+  body{padding:38px 0}
+  .wrap{min-height:auto}
+  .card{min-height:760px}
+}
+</style>
 </head>
 
 <body>
-  <main class="phone">
-    <section class="hero">
-      <div class="top">
-        <div>DIGITAL MEISHI</div>
-        <div class="small-kanji">個人名刺</div>
+<main class="wrap">
+  <section class="card">
+    <div class="emboss"></div>
+
+    <div class="top">
+      <div>
+        <div class="logo">還日堂</div>
+        <div class="kana">KANJITSUDŌ</div>
       </div>
+      <div class="seal">還</div>
+    </div>
 
-      <div class="enso"></div>
-      <h1 class="vertical-main">Kazuma</h1>
-      <div class="vertical-copy">静けさのある仕事を。</div>
+    <div class="name">
+      <h1>Kazuma ○○</h1>
+      <p>Founder / Therapist</p>
+    </div>
 
-      <div class="hero-meta">
-        PERSONAL CARD<br>
-        TOKYO / JAPAN
-      </div>
-    </section>
+    <div class="info">
+      <a href="tel:+819012345678">+81 90 1234 5678</a>
+      <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
+      <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
+      <span>Tokyo, Japan</span>
+    </div>
 
-    <section class="content">
-      <div class="card">
-        <div class="inner">
-          <div class="identity">
-            <div>
-              <div class="name-jp">Kazuma</div>
-              <div class="name-en">KAZUMA / PERSONAL CARD</div>
-            </div>
-            <div class="seal">和</div>
-          </div>
+    <div class="actions">
+      <button onclick="saveContact()">
+        電話帳に登録する <span class="arrow">→</span>
+      </button>
+      <a class="link" href="tel:+819012345678">
+        電話をかける <span class="arrow">→</span>
+      </a>
+      <a class="link" href="mailto:info@kanjitsudo.jp">
+        メールを送る <span class="arrow">→</span>
+      </a>
+      <a class="link" href="https://instagram.com/" target="_blank">
+        Instagram <span class="arrow">→</span>
+      </a>
+    </div>
 
-          <div class="title">
-            <b>Kazuma</b><br>
-            Founder / Creative Direction<br>
-            KANJITSUDO
-          </div>
+    <div class="foot">
+      <div class="en">KANJITSUDŌ</div>
+      <div class="copy">日常に、還る場所。</div>
+    </div>
+  </section>
+</main>
 
-          <div class="phrase">
-            ご縁をいただきありがとうございます。<br>
-            連絡先・SNS・所在地はこちらにまとめています。
-          </div>
-
-          <div class="contact">
-            <div class="row">
-              <div class="label">TEL</div>
-              <a href="tel:09012345678">090-1234-5678</a>
-            </div>
-            <div class="row">
-              <div class="label">MAIL</div>
-              <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
-            </div>
-            <div class="row">
-              <div class="label">WEB</div>
-              <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
-            </div>
-            <div class="row">
-              <div class="label">AREA</div>
-              <div>Tokyo / Japan</div>
-            </div>
-          </div>
-
-          <div class="actions">
-            <button class="primary" onclick="saveContact()">電話帳に登録する</button>
-            <a class="btn ghost" href="tel:09012345678">電話をかける</a>
-            <a class="btn ghost" href="mailto:info@kanjitsudo.jp">メールを送る</a>
-          </div>
-
-          <div class="subnav">
-            <a href="https://instagram.com/" target="_blank">Instagram</a>
-            <a href="https://line.me/" target="_blank">LINE</a>
-            <a href="https://maps.google.com/" target="_blank">Map</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="zen-note">
-        <div class="text">
-          余白をつくり、<br>
-          本質に触れる。
-          <div class="signature">Kazuma</div>
-        </div>
-      </div>
-
-      <footer>© KAZUMA</footer>
-    </section>
-  </main>
-
-  <script>
-    function saveContact(){
-      const vcard = `BEGIN:VCARD
+<script>
+function saveContact(){
+  const vcard = `BEGIN:VCARD
 VERSION:3.0
-N:Kazuma;;;;
-FN:Kazuma
+N:○○;Kazuma;;;
+FN:Kazuma ○○
 ORG:還日堂
-TITLE:Founder / Creative Direction
-TEL;TYPE=CELL:09012345678
+TITLE:Founder / Therapist
+TEL;TYPE=CELL:+819012345678
 EMAIL:info@kanjitsudo.jp
 URL:https://kanjitsudo.jp
-ADR;TYPE=WORK:;;Tokyo;;;Japan
-NOTE:Kazuma / Personal Digital Meishi
+ADR;TYPE=WORK:;;;;Tokyo;;Japan
+NOTE:還日堂 / KANJITSUDŌ
 END:VCARD`;
 
-      const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "kazuma.vcf";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-  </script>
+  const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "kazuma-kanjitsudo.vcf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>
