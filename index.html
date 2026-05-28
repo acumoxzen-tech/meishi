@@ -1,188 +1,241 @@
-任せて。
-GitHubの index.html をこれで丸ごと上書きして。
-
 <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Kazuma | 還日堂</title>
-  <meta name="description" content="Kazuma / 還日堂のデジタル名刺">
+  <title>Kazuma | Digital Card</title>
+  <meta name="description" content="Kazuma のデジタル名刺">
+  <meta property="og:title" content="Kazuma">
+  <meta property="og:description" content="Digital Business Card">
+  <meta property="og:type" content="website">
+
   <style>
     :root{
-      --black:#070706;
-      --ink:#18140f;
-      --paper:#f3eee3;
-      --gold:#b79b63;
-      --muted:#82786b;
+      --black:#060604;
+      --ink:#17130f;
+      --paper:#f4efe6;
+      --paper2:#e5dccd;
+      --gold:#ad915b;
+      --muted:#81786c;
+      --line:rgba(23,19,15,.13);
       --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
       --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
       background:#050504;
       color:var(--ink);
       font-family:var(--serif);
-      letter-spacing:.05em;
+      letter-spacing:.04em;
     }
+
     a{color:inherit;text-decoration:none}
-    .hero{
+
+    .stage{
+      width:min(460px,100%);
       min-height:100svh;
+      margin:auto;
+      background:
+        radial-gradient(circle at 30% 0%,rgba(255,255,255,.96),transparent 34%),
+        linear-gradient(180deg,var(--paper),var(--paper2));
+      overflow:hidden;
+      box-shadow:0 40px 120px rgba(0,0,0,.45);
+    }
+
+    .hero{
+      min-height:86svh;
       position:relative;
       color:white;
       overflow:hidden;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.92)),
-        url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop")
+        linear-gradient(180deg,rgba(0,0,0,.12),rgba(0,0,0,.88)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop")
         center/cover;
     }
-    .hero::after{
+
+    .hero::before{
       content:"";
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 50% 42%,rgba(255,255,255,.12),transparent 22%),
-        linear-gradient(90deg,rgba(0,0,0,.78),transparent 52%,rgba(0,0,0,.35));
+        radial-gradient(circle at 45% 36%,rgba(255,255,255,.16),transparent 22%),
+        linear-gradient(90deg,rgba(0,0,0,.72),transparent 55%,rgba(0,0,0,.42));
+      z-index:1;
     }
-    .brand{
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:-80px;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:42px 42px;
+      transform:rotate(-8deg);
+      z-index:1;
+      opacity:.5;
+    }
+
+    .top{
       position:absolute;
       z-index:2;
       top:28px;
       left:26px;
-    }
-    .brand-jp{
-      font-size:24px;
+      right:26px;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      font-family:var(--sans);
+      color:rgba(255,255,255,.76);
+      font-size:10px;
       letter-spacing:.28em;
     }
-    .brand-en{
-      margin-top:8px;
+
+    .tiny-brand{
+      writing-mode:vertical-rl;
+      font-family:var(--serif);
+      font-size:13px;
+      letter-spacing:.35em;
+      opacity:.82;
+    }
+
+    .name-block{
+      position:absolute;
+      z-index:2;
+      left:30px;
+      right:30px;
+      bottom:86px;
+    }
+
+    .kicker{
       font:10px var(--sans);
-      letter-spacing:.34em;
-      opacity:.72;
+      letter-spacing:.32em;
+      color:rgba(255,255,255,.62);
+      margin-bottom:18px;
     }
-    .seal{
-      position:absolute;
-      z-index:2;
-      right:28px;
-      top:30px;
-      width:52px;
-      height:52px;
-      border:1px solid rgba(255,255,255,.75);
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-size:22px;
-    }
-    .vertical-copy{
-      position:absolute;
-      z-index:2;
-      left:32px;
-      top:28%;
-      writing-mode:vertical-rl;
-      font-size:18px;
-      line-height:2.3;
-      letter-spacing:.28em;
-    }
-    .hero-title{
-      position:absolute;
-      z-index:2;
-      right:36px;
-      bottom:88px;
-      writing-mode:vertical-rl;
-      font-size:54px;
+
+    .name{
+      font-size:64px;
+      line-height:.95;
       font-weight:400;
-      letter-spacing:.24em;
-      line-height:1.15;
+      letter-spacing:.03em;
+      margin:0;
     }
+
+    .name span{
+      display:block;
+      margin-left:54px;
+    }
+
+    .role{
+      margin-top:22px;
+      font:12px var(--sans);
+      letter-spacing:.16em;
+      line-height:1.9;
+      color:rgba(255,255,255,.72);
+    }
+
     .scroll{
       position:absolute;
       z-index:2;
       bottom:26px;
-      left:50%;
-      transform:translateX(-50%);
+      left:30px;
       font:10px var(--sans);
-      letter-spacing:.3em;
-      opacity:.58;
+      letter-spacing:.26em;
+      color:rgba(255,255,255,.45);
     }
-    .profile-wrap{
-      background:
-        radial-gradient(circle at 20% 0%,rgba(255,255,255,.95),transparent 34%),
-        linear-gradient(180deg,#f6f1e8,#ded3c2);
-      padding:34px 18px 42px;
+
+    .content{
+      position:relative;
+      padding:30px 20px 46px;
     }
-    .card{
-      max-width:430px;
-      margin:-88px auto 0;
+
+    .panel{
+      margin-top:-78px;
       position:relative;
       z-index:5;
       border-radius:34px;
-      overflow:hidden;
-      background:rgba(248,244,236,.82);
+      background:rgba(248,244,237,.84);
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 30px 80px rgba(0,0,0,.28);
       backdrop-filter:blur(18px);
-      box-shadow:0 35px 80px rgba(0,0,0,.32);
-      border:1px solid rgba(255,255,255,.65);
+      overflow:hidden;
     }
-    .card-head{
-      padding:30px 26px 22px;
+
+    .panel-inner{
+      padding:28px 24px 24px;
+    }
+
+    .intro{
       display:grid;
-      grid-template-columns:96px 1fr;
-      gap:20px;
+      grid-template-columns:92px 1fr;
+      gap:18px;
       align-items:center;
     }
+
     .avatar{
-      width:96px;
-      height:96px;
+      width:92px;
+      height:92px;
       border-radius:50%;
       object-fit:cover;
-      box-shadow:0 18px 36px rgba(0,0,0,.18);
+      box-shadow:0 16px 34px rgba(0,0,0,.18);
+      border:4px solid rgba(255,255,255,.8);
     }
-    h1{
+
+    .intro h2{
       margin:0 0 8px;
-      font-size:31px;
+      font-size:30px;
       font-weight:400;
     }
-    .role{
-      font:12px var(--sans);
+
+    .intro p{
+      margin:0;
       color:var(--muted);
+      font:12px var(--sans);
       letter-spacing:.12em;
-      line-height:1.7;
+      line-height:1.8;
     }
-    .message{
-      padding:0 26px 28px;
+
+    .statement{
+      margin:28px 0 24px;
+      padding-left:16px;
+      border-left:1px solid var(--gold);
       font-size:14px;
       line-height:2.15;
     }
-    .meishi{
-      margin:0 18px 22px;
-      padding:22px 20px;
-      border-radius:24px;
-      background:#f9f5ed;
-      border:1px solid rgba(24,20,15,.1);
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.8);
+
+    .contact{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:10px 0;
     }
-    .line{
+
+    .row{
       display:grid;
-      grid-template-columns:78px 1fr;
-      gap:12px;
-      padding:14px 0;
-      border-bottom:1px solid rgba(24,20,15,.1);
+      grid-template-columns:72px 1fr;
+      gap:14px;
+      padding:13px 0;
       font:14px var(--sans);
     }
-    .line:last-child{border-bottom:none}
+
     .label{
       color:var(--gold);
       font-size:10px;
       letter-spacing:.22em;
       padding-top:3px;
     }
+
     .actions{
-      padding:0 18px 22px;
       display:grid;
       gap:12px;
+      margin-top:24px;
     }
+
     button,.btn{
-      min-height:56px;
+      min-height:55px;
       border-radius:999px;
       border:0;
       display:flex;
@@ -192,120 +245,149 @@ GitHubの index.html をこれで丸ごと上書きして。
       letter-spacing:.15em;
       cursor:pointer;
     }
+
     .primary{
       color:white;
       background:#15120f;
-      box-shadow:0 18px 36px rgba(0,0,0,.2);
+      box-shadow:0 18px 38px rgba(0,0,0,.18);
     }
-    .gold{
-      color:white;
-      background:linear-gradient(135deg,#c4aa75,#82663a);
+
+    .ghost{
+      color:#17130f;
+      background:rgba(255,255,255,.5);
+      border:1px solid rgba(255,255,255,.8);
     }
-    .subgrid{
+
+    .link-strip{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:10px;
-      padding:0 18px 26px;
+      margin-top:12px;
     }
-    .sub{
+
+    .mini{
       height:78px;
       border-radius:20px;
-      background:rgba(255,255,255,.48);
+      background:rgba(255,255,255,.42);
       display:grid;
       place-items:center;
       font:11px var(--sans);
-      color:#211d18;
+      letter-spacing:.12em;
       box-shadow:0 10px 24px rgba(0,0,0,.05);
     }
-    .quote{
-      margin-top:30px;
-      max-width:430px;
-      margin-left:auto;
-      margin-right:auto;
-      padding:36px 24px;
-      color:white;
-      border-radius:32px;
+
+    .note{
+      padding:30px 22px 34px;
       text-align:center;
-      background:
-        linear-gradient(rgba(0,0,0,.44),rgba(0,0,0,.72)),
-        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop")
-        center/cover;
-      box-shadow:0 22px 60px rgba(0,0,0,.22);
+      background:#11100d;
+      color:rgba(255,255,255,.78);
+      font-size:14px;
+      line-height:2;
+      letter-spacing:.14em;
     }
-    .quote p{
-      margin:0;
-      line-height:2.1;
-      letter-spacing:.18em;
+
+    .signature{
+      margin-top:18px;
+      font-size:34px;
+      color:rgba(255,255,255,.5);
+      font-family:cursive;
+      letter-spacing:.02em;
     }
+
     footer{
-      padding:28px;
+      padding:26px 0 0;
       text-align:center;
-      color:var(--muted);
       font:10px var(--sans);
       letter-spacing:.22em;
+      color:var(--muted);
     }
+
     @media(min-width:720px){
-      .hero,.profile-wrap{max-width:460px;margin:auto}
+      body{padding:42px 0}
+      .stage{border-radius:38px;min-height:auto}
     }
   </style>
 </head>
+
 <body>
-  <section class="hero">
-    <div class="brand">
-      <div class="brand-jp">還日堂</div>
-      <div class="brand-en">KANJITSUDO</div>
-    </div>
-    <div class="seal">還</div>
-    <div class="vertical-copy">日常に、還る場所。</div>
-    <h2 class="hero-title">還日堂</h2>
-    <div class="scroll">SCROLL</div>
-  </section>
-  <section class="profile-wrap">
-    <div class="card">
-      <div class="card-head">
-        <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Kazuma">
-        <div>
-          <h1>Kazuma</h1>
-          <div class="role">還日堂 主宰<br>KANJITSUDO</div>
+  <main class="stage">
+    <section class="hero">
+      <div class="top">
+        <div>DIGITAL CARD</div>
+        <div class="tiny-brand">還日堂</div>
+      </div>
+
+      <div class="name-block">
+        <div class="kicker">PERSONAL CARD</div>
+        <h1 class="name">Kazu<span>ma</span></h1>
+        <div class="role">
+          Founder / Creative Direction<br>
+          KANJITSUDO
         </div>
       </div>
-      <div class="message">
-        ご縁をいただきありがとうございます。<br>
-        連絡先・所在地・SNSをこちらにまとめています。
-      </div>
-      <div class="meishi">
-        <div class="line">
-          <div class="label">TEL</div>
-          <a href="tel:09012345678">090-1234-5678</a>
+
+      <div class="scroll">SCROLL</div>
+    </section>
+
+    <section class="content">
+      <div class="panel">
+        <div class="panel-inner">
+          <div class="intro">
+            <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop" alt="Kazuma">
+            <div>
+              <h2>Kazuma</h2>
+              <p>Personal Business Card<br>Tokyo / Japan</p>
+            </div>
+          </div>
+
+          <div class="statement">
+            ご縁をいただきありがとうございます。<br>
+            連絡先・SNS・所在地はこちらにまとめています。
+          </div>
+
+          <div class="contact">
+            <div class="row">
+              <div class="label">TEL</div>
+              <a href="tel:09012345678">090-1234-5678</a>
+            </div>
+            <div class="row">
+              <div class="label">MAIL</div>
+              <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
+            </div>
+            <div class="row">
+              <div class="label">WEB</div>
+              <a href="https://kanjitsudo.jp" target="_blank">kanjitsudo.jp</a>
+            </div>
+            <div class="row">
+              <div class="label">AREA</div>
+              <div>Tokyo / Japan</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="primary" onclick="saveContact()">電話帳に登録する</button>
+            <a class="btn ghost" href="tel:09012345678">電話をかける</a>
+            <a class="btn ghost" href="mailto:info@kanjitsudo.jp">メールを送る</a>
+          </div>
+
+          <div class="link-strip">
+            <a class="mini" href="https://instagram.com/" target="_blank">Instagram</a>
+            <a class="mini" href="https://line.me/" target="_blank">LINE</a>
+            <a class="mini" href="https://maps.google.com/" target="_blank">Map</a>
+          </div>
         </div>
-        <div class="line">
-          <div class="label">MAIL</div>
-          <a href="mailto:info@kanjitsudo.jp">info@kanjitsudo.jp</a>
-        </div>
-        <div class="line">
-          <div class="label">WEB</div>
-          <a href="https://kanjitsudo.jp">kanjitsudo.jp</a>
-        </div>
-        <div class="line">
-          <div class="label">ADDRESS</div>
-          <div>東京都渋谷区〇〇 1-2-3</div>
+
+        <div class="note">
+          静けさのある仕事を、<br>
+          丁寧に、深く。
+          <div class="signature">Kazuma</div>
         </div>
       </div>
-      <div class="actions">
-        <button class="primary" onclick="saveContact()">電話帳に登録する</button>
-        <a class="btn gold" href="tel:09012345678">電話をかける</a>
-      </div>
-      <div class="subgrid">
-        <a class="sub" href="mailto:info@kanjitsudo.jp">MAIL</a>
-        <a class="sub" href="https://instagram.com/" target="_blank">INSTAGRAM</a>
-        <a class="sub" href="https://maps.google.com/" target="_blank">MAP</a>
-      </div>
-    </div>
-    <div class="quote">
-      <p>還ることは、進むこと。<br>静けさの中に、豊かさがある。</p>
-    </div>
-    <footer>© KANJITSUDO</footer>
-  </section>
+
+      <footer>© KAZUMA</footer>
+    </section>
+  </main>
+
   <script>
     function saveContact(){
       const vcard = `BEGIN:VCARD
@@ -313,18 +395,19 @@ VERSION:3.0
 N:Kazuma;;;;
 FN:Kazuma
 ORG:還日堂
-TITLE:主宰
+TITLE:Founder / Creative Direction
 TEL;TYPE=CELL:09012345678
 EMAIL:info@kanjitsudo.jp
 URL:https://kanjitsudo.jp
-ADR;TYPE=WORK:;;東京都渋谷区〇〇 1-2-3;;;;
-NOTE:還日堂 / KANJITSUDO
+ADR;TYPE=WORK:;;Tokyo;;;Japan
+NOTE:Kazuma / Personal Business Card
 END:VCARD`;
+
       const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "kazuma-kanjitsudo.vcf";
+      a.download = "kazuma.vcf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
