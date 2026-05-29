@@ -9,16 +9,16 @@
 <style>
 :root{
   --ink:#17130f;
-  --soft:#857c70;
+  --soft:#7f7567;
+  --muted:#aaa093;
   --gold:#a88956;
-  --paper:#f6f0e5;
+  --paper:#f7f1e6;
+  --black:#15130f;
   --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html{
   -webkit-text-size-adjust:100%;
@@ -26,7 +26,7 @@ html{
 
 body{
   margin:0;
-  background:#efe7da;
+  background:#eee6da;
   color:var(--ink);
   font-family:var(--serif);
   letter-spacing:.045em;
@@ -37,7 +37,7 @@ a{
   text-decoration:none;
 }
 
-.stage{
+.page{
   width:100%;
   max-width:430px;
   min-height:100svh;
@@ -45,196 +45,200 @@ a{
   position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 68% 18%,rgba(255,255,255,.95),transparent 24%),
-    linear-gradient(180deg,#fbf6ed 0%,#f6efe6 46%,#eee4d7 100%);
+    radial-gradient(circle at 63% 18%,rgba(255,255,255,.90),transparent 22%),
+    radial-gradient(circle at 56% 42%,rgba(255,255,255,.62),transparent 28%),
+    linear-gradient(180deg,#faf5eb 0%,#f5eee3 54%,#ece1d2 100%);
 }
 
-/* 和紙感 */
-.stage::before{
+/* 和紙テクスチャ */
+.page::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.36'/%3E%3C/svg%3E");
-  opacity:.13;
+  opacity:.17;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.74' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.40'/%3E%3C/svg%3E");
   mix-blend-mode:multiply;
   pointer-events:none;
 }
 
-/* B案の墨そのものに寄せる：左上の大きなかすれ */
-.brush{
+/* B案の巨大な円相ブラシ */
+.enso-big{
   position:absolute;
   z-index:1;
-  left:-96px;
-  top:-82px;
-  width:230px;
-  height:700px;
-  opacity:.48;
+  left:-262px;
+  top:-98px;
+  width:520px;
+  height:760px;
   pointer-events:none;
-  transform:rotate(-13deg);
+  opacity:.68;
 }
 
-.brush::before{
+.enso-big::before{
   content:"";
   position:absolute;
-  left:24px;
-  top:0;
-  width:155px;
-  height:640px;
+  left:14px;
+  top:36px;
+  width:470px;
+  height:630px;
+  border-radius:50%;
+  border:72px solid rgba(20,18,16,.15);
+  border-right-color:transparent;
+  border-bottom-color:rgba(20,18,16,.22);
+  border-top-color:rgba(20,18,16,.42);
+  transform:rotate(-24deg);
+  filter:blur(.45px);
+}
+
+.enso-big::after{
+  content:"";
+  position:absolute;
+  left:35px;
+  top:58px;
+  width:414px;
+  height:566px;
+  border-radius:50%;
+  border:32px solid rgba(20,18,16,.12);
+  border-right-color:transparent;
+  border-bottom-color:rgba(20,18,16,.18);
+  border-top-color:rgba(20,18,16,.28);
+  transform:rotate(-23deg);
+  filter:blur(1px);
+}
+
+/* 筆のかすれ追加 */
+.brush-dry{
+  position:absolute;
+  z-index:1;
+  left:-42px;
+  top:352px;
+  width:118px;
+  height:215px;
+  opacity:.34;
+  transform:rotate(-18deg);
+  pointer-events:none;
   background:
-    radial-gradient(ellipse at 42% 4%,rgba(18,16,14,.90) 0 10%,transparent 25%),
-    radial-gradient(ellipse at 58% 18%,rgba(18,16,14,.66) 0 13%,transparent 34%),
-    radial-gradient(ellipse at 42% 40%,rgba(18,16,14,.43) 0 14%,transparent 35%),
-    radial-gradient(ellipse at 58% 66%,rgba(18,16,14,.24) 0 12%,transparent 34%),
-    radial-gradient(ellipse at 45% 91%,rgba(18,16,14,.15) 0 11%,transparent 30%),
-    linear-gradient(90deg,transparent 0 28%,rgba(18,16,14,.74) 40%,rgba(18,16,14,.18) 56%,transparent 72%);
-  filter:blur(.28px);
+    linear-gradient(90deg,rgba(20,18,16,.55),transparent 22%),
+    repeating-linear-gradient(90deg,rgba(20,18,16,.48) 0 2px,transparent 2px 8px);
+  clip-path:polygon(0 0, 70% 10%, 42% 100%, 0 92%);
+  filter:blur(.3px);
 }
 
-.brush::after{
-  content:"";
-  position:absolute;
-  left:124px;
-  top:30px;
-  width:20px;
-  height:570px;
-  border-radius:999px;
-  background:linear-gradient(180deg,rgba(18,16,14,.72),rgba(18,16,14,.02));
-  filter:blur(9px);
-}
-
-/* 上部余白・縦文字 */
-.top{
+/* 上部：左コピーと右ブランド */
+.hero{
   position:relative;
   z-index:2;
-  height:310px;
+  min-height:430px;
+  padding:0 0;
 }
 
 .left-copy{
   position:absolute;
-  left:72px;
-  top:94px;
+  left:43px;
+  top:96px;
   writing-mode:vertical-rl;
-  font-size:15px;
-  line-height:2.15;
-  letter-spacing:.24em;
+  font-size:14px;
+  line-height:2.05;
+  letter-spacing:.22em;
 }
 
 .left-line{
   position:absolute;
-  left:83px;
-  top:256px;
+  left:55px;
+  top:285px;
   width:1px;
-  height:86px;
-  background:rgba(168,137,86,.58);
+  height:105px;
+  background:rgba(168,137,86,.56);
 }
 
-.brand-right{
+.brand{
   position:absolute;
-  top:66px;
-  right:63px;
+  right:52px;
+  top:54px;
   text-align:center;
 }
 
 .clinic{
   writing-mode:vertical-rl;
-  margin:0 auto 16px;
-  font-size:14px;
+  margin:0 auto 15px;
+  font-size:13px;
   letter-spacing:.22em;
 }
 
-.brand-kanji{
-  writing-mode:vertical-rl;
+.brand-name{
   margin:0 auto;
-  font-size:43px;
-  line-height:1.05;
-  letter-spacing:.16em;
+  writing-mode:vertical-rl;
+  font-size:41px;
   font-weight:400;
+  line-height:1.04;
+  letter-spacing:.14em;
 }
 
 .brand-en{
   margin-top:22px;
-  font:11px var(--sans);
+  font:10px var(--sans);
   letter-spacing:.34em;
   color:var(--soft);
 }
 
-/* 中央の円相ロゴ */
-.symbol-area{
-  position:relative;
-  z-index:2;
-  height:184px;
-  display:grid;
-  place-items:center;
-}
-
-.symbol{
-  width:118px;
-  height:118px;
+/* 中央円相 */
+.center-enso{
+  position:absolute;
+  left:50%;
+  top:278px;
+  transform:translateX(-50%);
+  width:116px;
+  height:116px;
   border-radius:50%;
-  position:relative;
-  display:grid;
-  place-items:center;
 }
 
-.symbol::before{
+.center-enso::before{
   content:"";
   position:absolute;
   inset:0;
   border-radius:50%;
-  border:1px solid rgba(168,137,86,.40);
+  border:14px solid rgba(105,98,88,.16);
+  border-right-color:rgba(105,98,88,.08);
+  border-top-color:rgba(105,98,88,.22);
+  transform:rotate(-30deg);
 }
 
-.symbol::after{
+.center-enso::after{
   content:"";
   position:absolute;
-  inset:18px;
+  inset:22px;
   border-radius:50%;
-  border:1px solid rgba(23,19,15,.05);
-}
-
-.symbol img{
-  width:88px;
-  height:88px;
-  object-fit:contain;
-  opacity:.66;
-  filter:
-    invert(1)
-    brightness(.18)
-    contrast(1.45)
-    sepia(.18)
-    saturate(.7);
-  mix-blend-mode:multiply;
+  border:1px solid rgba(23,19,15,.045);
 }
 
 /* 名前 */
-.name-area{
+.identity{
   position:relative;
   z-index:2;
   text-align:center;
-  padding:26px 38px 0;
+  padding:0 46px;
 }
 
-.name{
+.jp-name{
   margin:0;
-  font-size:33px;
+  font-size:31px;
   font-weight:400;
-  line-height:1.24;
+  line-height:1.22;
   letter-spacing:.20em;
 }
 
-.roman{
+.en-name{
   margin-top:13px;
   font:13px var(--sans);
-  letter-spacing:.28em;
+  letter-spacing:.25em;
   color:var(--soft);
 }
 
 .divider{
-  width:33px;
+  width:32px;
   height:1px;
   margin:22px auto 0;
-  background:rgba(168,137,86,.65);
+  background:rgba(168,137,86,.64);
 }
 
 .role{
@@ -243,7 +247,7 @@ a{
   letter-spacing:.18em;
 }
 
-/* ボタンとSNS */
+/* ボタン */
 .actions{
   position:relative;
   z-index:2;
@@ -254,13 +258,36 @@ a{
   width:100%;
   height:52px;
   border:0;
-  border-radius:8px;
-  background:#17130f;
+  border-radius:9px;
+  background:linear-gradient(180deg,#1b1916,#12100e);
   color:#fff;
   font:13px var(--sans);
   letter-spacing:.18em;
-  box-shadow:0 15px 33px rgba(0,0,0,.13);
+  box-shadow:0 14px 30px rgba(0,0,0,.13);
   cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.contact-inner{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.contact svg{
+  width:23px;
+  height:23px;
+  stroke-width:1.4;
+}
+
+.arrow{
+  margin-left:22px;
+  font-size:24px;
+  line-height:1;
+  font-family:var(--sans);
+  opacity:.86;
 }
 
 .links{
@@ -271,19 +298,19 @@ a{
 }
 
 .link{
-  height:92px;
-  border-radius:10px;
-  background:rgba(255,255,255,.58);
+  height:91px;
+  border-radius:12px;
+  background:rgba(255,255,255,.60);
   border:1px solid rgba(255,255,255,.76);
   box-shadow:
-    0 12px 26px rgba(0,0,0,.035),
-    inset -3px -3px 8px rgba(255,255,255,.8),
+    0 10px 26px rgba(0,0,0,.035),
+    inset -3px -3px 8px rgba(255,255,255,.86),
     inset 3px 3px 8px rgba(0,0,0,.02);
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  gap:11px;
+  gap:10px;
 }
 
 .link svg{
@@ -298,103 +325,107 @@ a{
 }
 
 /* 下部黒帯 */
-.bottom{
+.footer{
   position:relative;
   z-index:2;
   min-height:236px;
-  background:#17130f;
+  background:#161411;
   color:#fff;
   text-align:center;
-  padding:48px 30px 34px;
+  padding:43px 30px 32px;
   overflow:hidden;
 }
 
-.bottom::before{
+.footer::before{
   content:"";
   position:absolute;
-  left:-90px;
-  top:-42px;
-  width:270px;
-  height:210px;
+  left:-92px;
+  top:-46px;
+  width:300px;
+  height:222px;
   border-radius:50%;
-  border:18px solid rgba(255,255,255,.055);
+  border:28px solid rgba(255,255,255,.055);
+  border-right-color:transparent;
   transform:rotate(-24deg);
 }
 
-.bottom-mark{
-  width:44px;
-  height:44px;
+.footer::after{
+  content:"";
+  position:absolute;
+  right:-70px;
+  bottom:-70px;
+  width:220px;
+  height:160px;
   border-radius:50%;
-  border:1px solid rgba(168,137,86,.75);
-  display:grid;
-  place-items:center;
-  color:rgba(168,137,86,.95);
-  margin:0 auto 24px;
+  border:18px solid rgba(255,255,255,.035);
+  border-left-color:transparent;
+  transform:rotate(-16deg);
 }
 
-.bottom-copy{
-  font-size:18px;
+.footer-mark{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(168,137,86,.72);
+  color:rgba(168,137,86,.95);
+  display:grid;
+  place-items:center;
+  margin:0 auto 23px;
+}
+
+.footer-copy{
+  position:relative;
+  z-index:2;
+  font-size:17px;
   line-height:2.05;
   letter-spacing:.18em;
   color:rgba(255,255,255,.90);
 }
 
-.bottom-en{
-  margin-top:17px;
+.footer-en{
+  margin-top:15px;
   font:10px var(--sans);
-  letter-spacing:.32em;
-  color:rgba(168,137,86,.76);
+  letter-spacing:.30em;
+  color:rgba(168,137,86,.72);
 }
 
 @media(max-width:390px){
-  .top{
-    height:284px;
+  .hero{
+    min-height:410px;
   }
 
   .left-copy{
-    display:none;
+    left:37px;
+    top:92px;
+    font-size:13px;
   }
 
   .left-line{
-    display:none;
+    left:49px;
+    top:270px;
+    height:95px;
   }
 
-  .brand-right{
-    top:56px;
-    right:58px;
+  .brand{
+    right:42px;
+    top:50px;
   }
 
-  .clinic{
-    font-size:12px;
+  .brand-name{
+    font-size:36px;
   }
 
-  .brand-kanji{
-    font-size:37px;
+  .center-enso{
+    top:272px;
+    width:104px;
+    height:104px;
   }
 
-  .brand-en{
-    font-size:10px;
+  .jp-name{
+    font-size:27px;
   }
 
-  .symbol-area{
-    height:164px;
-  }
-
-  .symbol{
-    width:106px;
-    height:106px;
-  }
-
-  .symbol img{
-    width:79px;
-    height:79px;
-  }
-
-  .name{
-    font-size:28px;
-  }
-
-  .roman{
+  .en-name{
     font-size:11px;
   }
 
@@ -403,7 +434,7 @@ a{
   }
 
   .actions{
-    padding:36px 38px 50px;
+    padding:38px 38px 52px;
   }
 
   .contact{
@@ -426,39 +457,42 @@ a{
 </head>
 
 <body>
-<main class="stage">
+<main class="page">
 
-  <div class="brush"></div>
+  <div class="enso-big"></div>
+  <div class="brush-dry"></div>
 
-  <section class="top">
+  <section class="hero">
     <div class="left-copy">日常に、還る場所。</div>
     <div class="left-line"></div>
 
-    <div class="brand-right">
+    <div class="brand">
       <div class="clinic">鍼灸院</div>
-      <h1 class="brand-kanji">還日堂</h1>
+      <h1 class="brand-name">還日堂</h1>
       <div class="brand-en">KANJITSUDŌ</div>
     </div>
+
+    <div class="center-enso"></div>
   </section>
 
-  <section class="symbol-area">
-    <div class="symbol">
-      <img
-        src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
-        alt="還日堂">
-    </div>
-  </section>
-
-  <section class="name-area">
-    <h2 class="name">山中 一馬</h2>
-    <div class="roman">Kazuma Yamanaka</div>
+  <section class="identity">
+    <h2 class="jp-name">山中 一馬</h2>
+    <div class="en-name">Kazuma Yamanaka</div>
     <div class="divider"></div>
     <div class="role">鍼灸院 還日堂　院長</div>
   </section>
 
   <section class="actions">
     <button class="contact" type="button" onclick="saveContact()">
-      連絡帳に登録する
+      <span class="contact-inner">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <rect x="4.5" y="4" width="15" height="16" rx="2"></rect>
+          <circle cx="10" cy="10" r="2"></circle>
+          <path d="M7.2 16c.7-2 4.9-2 5.6 0M14.5 8h2M14.5 12h2M14.5 16h2"></path>
+        </svg>
+        連絡帳に登録する
+        <span class="arrow">›</span>
+      </span>
     </button>
 
     <div class="links">
@@ -489,10 +523,10 @@ a{
     </div>
   </section>
 
-  <footer class="bottom">
-    <div class="bottom-mark">還</div>
-    <div class="bottom-copy">日常に、還る場所。</div>
-    <div class="bottom-en">KANJITSUDŌ</div>
+  <footer class="footer">
+    <div class="footer-mark">還</div>
+    <div class="footer-copy">日常に、還る場所。</div>
+    <div class="footer-en">KANJITSUDŌ</div>
   </footer>
 
 </main>
