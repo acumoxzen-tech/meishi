@@ -8,14 +8,13 @@
 
 <style>
 :root{
-  --ink:#16130f;
-  --sub:#746b5f;
-  --muted:#a09688;
-  --paper:#f7f1e7;
-  --paper2:#eee4d7;
-  --gold:#a98956;
-  --red:#9b372f;
-  --line:rgba(22,19,15,.10);
+  --ink:#15120f;
+  --sub:#746a5c;
+  --muted:#a79d8e;
+  --paper:#f6f0e5;
+  --paper2:#eee5d8;
+  --gold:#a98752;
+  --red:#a13a31;
   --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
@@ -28,10 +27,10 @@ html{
 
 body{
   margin:0;
-  background:#eee6da;
+  background:#eee7dc;
   color:var(--ink);
   font-family:var(--serif);
-  letter-spacing:.04em;
+  letter-spacing:.045em;
 }
 
 a{
@@ -40,79 +39,79 @@ a{
 }
 
 .page{
+  position:relative;
   width:100%;
   max-width:430px;
   min-height:100svh;
   margin:0 auto;
-  position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 70% 18%,rgba(255,255,255,.95),transparent 23%),
-    linear-gradient(180deg,#faf5ec 0%,#f3eadf 58%,#e6d9c8 100%);
+    radial-gradient(circle at 72% 16%,rgba(255,255,255,.95),transparent 25%),
+    radial-gradient(circle at 50% 46%,rgba(255,255,255,.78),transparent 23%),
+    linear-gradient(180deg,#f9f3e9 0%,#f3eadf 58%,#e9dece 100%);
 }
 
-/* paper texture */
 .page::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
-  opacity:.12;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  opacity:.15;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
   mix-blend-mode:multiply;
   pointer-events:none;
 }
 
-/* sumi-e brush */
-.ink{
+/* B案の墨をCSSだけで再現 */
+.sumi{
   position:absolute;
   z-index:1;
-  left:-86px;
-  top:-12px;
-  width:220px;
-  height:520px;
+  left:-76px;
+  top:-26px;
+  width:170px;
+  height:470px;
+  opacity:.48;
+  transform:rotate(-9deg);
   pointer-events:none;
-  opacity:.34;
-  transform:rotate(-8deg);
 }
 
-.ink::before{
+.sumi::before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(ellipse at 40% 4%,rgba(17,14,12,.9) 0 12%,transparent 25%),
-    radial-gradient(ellipse at 58% 18%,rgba(17,14,12,.56) 0 12%,transparent 31%),
-    radial-gradient(ellipse at 40% 42%,rgba(17,14,12,.42) 0 13%,transparent 34%),
-    radial-gradient(ellipse at 58% 70%,rgba(17,14,12,.28) 0 11%,transparent 32%),
-    linear-gradient(90deg,transparent 0 31%,rgba(17,14,12,.68) 38%,rgba(17,14,12,.12) 50%,transparent 62%);
-  filter:blur(.2px);
+    radial-gradient(ellipse at 42% 0%,rgba(19,17,15,.88) 0 13%,transparent 27%),
+    radial-gradient(ellipse at 55% 21%,rgba(19,17,15,.62) 0 14%,transparent 34%),
+    radial-gradient(ellipse at 42% 48%,rgba(19,17,15,.44) 0 13%,transparent 34%),
+    radial-gradient(ellipse at 53% 76%,rgba(19,17,15,.22) 0 12%,transparent 31%),
+    linear-gradient(90deg,transparent 0 32%,rgba(19,17,15,.72) 40%,rgba(19,17,15,.22) 50%,transparent 66%);
+  filter:blur(.15px);
 }
 
-.ink::after{
+.sumi::after{
   content:"";
   position:absolute;
-  left:112px;
-  top:36px;
-  width:22px;
-  height:430px;
+  left:94px;
+  top:22px;
+  width:18px;
+  height:420px;
   border-radius:999px;
-  background:linear-gradient(180deg,rgba(20,16,13,.72),rgba(20,16,13,.02));
-  filter:blur(10px);
+  background:linear-gradient(180deg,rgba(19,17,15,.70),rgba(19,17,15,.03));
+  filter:blur(9px);
 }
 
-/* header */
+/* 上部 */
 .header{
   position:relative;
   z-index:2;
-  height:178px;
-  padding:34px 29px 0;
+  height:132px;
+  padding:24px 28px 0;
 }
 
 .brand{
   position:absolute;
-  top:32px;
-  left:35px;
+  left:32px;
+  top:24px;
   display:flex;
   align-items:flex-start;
   gap:13px;
@@ -121,21 +120,21 @@ a{
 .brand-en{
   writing-mode:vertical-rl;
   font:10px var(--sans);
-  letter-spacing:.33em;
+  letter-spacing:.34em;
   color:var(--muted);
 }
 
 .brand-jp{
   writing-mode:vertical-rl;
-  font-size:22px;
-  line-height:1.65;
-  letter-spacing:.22em;
+  font-size:20px;
+  line-height:1.58;
+  letter-spacing:.24em;
 }
 
 .seal{
   position:absolute;
-  top:38px;
   right:29px;
+  top:34px;
   width:26px;
   height:26px;
   border:1px solid var(--red);
@@ -145,22 +144,22 @@ a{
   font-size:12px;
 }
 
-/* hero */
-.hero{
+/* メイン */
+.main{
   position:relative;
   z-index:2;
+  padding:0 29px 28px;
   text-align:center;
-  padding:0 28px 0;
 }
 
 .logo-orbit{
-  width:210px;
-  height:210px;
+  width:174px;
+  height:174px;
   margin:0 auto;
   border-radius:50%;
+  position:relative;
   display:grid;
   place-items:center;
-  position:relative;
 }
 
 .logo-orbit::before{
@@ -168,177 +167,170 @@ a{
   position:absolute;
   inset:0;
   border-radius:50%;
-  border:1px solid rgba(169,137,86,.36);
+  border:1px solid rgba(169,135,82,.42);
 }
 
 .logo-orbit::after{
   content:"";
   position:absolute;
-  inset:28px;
+  inset:24px;
   border-radius:50%;
-  border:1px solid rgba(22,19,15,.045);
+  border:1px solid rgba(21,18,15,.05);
 }
 
-.main-logo{
-  width:138px;
-  height:138px;
+.logo{
+  width:114px;
+  height:114px;
   object-fit:contain;
-  opacity:.86;
+  opacity:.85;
   filter:
     invert(1)
     brightness(.08)
-    contrast(1.8)
-    sepia(.2)
+    contrast(1.75)
+    sepia(.16)
     saturate(.7);
   mix-blend-mode:multiply;
 }
 
-.name-area{
-  margin-top:46px;
+.name-block{
+  margin-top:34px;
 }
 
 .jp-name{
   margin:0;
-  font-size:40px;
+  font-size:36px;
   font-weight:400;
-  line-height:1.16;
-  letter-spacing:.17em;
+  line-height:1.2;
+  letter-spacing:.18em;
 }
 
 .en-name{
-  margin-top:15px;
-  font:14px var(--sans);
+  margin-top:13px;
+  font:13px var(--sans);
   letter-spacing:.28em;
   color:var(--sub);
 }
 
 .divider{
-  width:34px;
+  width:36px;
   height:1px;
-  margin:22px auto 0;
-  background:rgba(169,137,86,.62);
+  margin:20px auto 0;
+  background:rgba(169,135,82,.68);
 }
 
 .role{
-  margin-top:20px;
-  font-size:15px;
+  margin-top:18px;
+  font-size:14px;
   letter-spacing:.16em;
-  color:#2d2924;
+  color:#2f2923;
 }
 
-/* actions */
+/* ボタン */
 .actions{
   position:relative;
   z-index:2;
-  padding:52px 31px 50px;
+  padding:22px 31px 38px;
 }
 
 .contact-btn{
   width:100%;
-  height:62px;
+  height:58px;
   border:0;
   border-radius:999px;
   background:#14110e;
-  color:white;
-  font:700 15px var(--sans);
+  color:#fff;
+  font:700 14px var(--sans);
   letter-spacing:.16em;
-  box-shadow:0 18px 40px rgba(0,0,0,.16);
+  box-shadow:0 16px 36px rgba(0,0,0,.15);
   cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 
 .socials{
-  margin-top:22px;
+  margin-top:18px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  gap:12px;
 }
 
 .social{
-  height:112px;
-  border-radius:24px;
-  background:rgba(255,255,255,.62);
-  border:1px solid rgba(255,255,255,.88);
+  height:104px;
+  border-radius:22px;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(255,255,255,.9);
   box-shadow:
-    0 14px 34px rgba(0,0,0,.045),
+    0 12px 28px rgba(0,0,0,.04),
     inset -3px -3px 8px rgba(255,255,255,.9),
     inset 3px 3px 8px rgba(0,0,0,.025);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:13px;
+  gap:11px;
 }
 
 .social svg{
-  width:29px;
-  height:29px;
+  width:27px;
+  height:27px;
   stroke-width:1.45;
 }
 
 .social-label{
-  font:13px var(--sans);
-  letter-spacing:.18em;
+  font:12px var(--sans);
+  letter-spacing:.17em;
   color:var(--sub);
 }
 
-/* profile */
+/* 画面イメージに寄せるため、プロフィールは下に控えめ */
 .profile{
   position:relative;
   z-index:2;
-  padding:0 31px 54px;
+  padding:0 31px 46px;
 }
 
 .profile-card{
-  padding:24px 22px;
-  border-radius:26px;
-  background:rgba(255,255,255,.40);
+  padding:20px 19px;
+  border-radius:24px;
+  background:rgba(255,255,255,.36);
   border:1px solid rgba(255,255,255,.62);
   display:grid;
-  grid-template-columns:82px 1fr;
-  gap:18px;
+  grid-template-columns:74px 1fr;
+  gap:17px;
   align-items:center;
 }
 
 .portrait{
-  width:82px;
-  height:82px;
+  width:74px;
+  height:74px;
   border-radius:50%;
   object-fit:cover;
-  box-shadow:0 14px 30px rgba(0,0,0,.11);
+  box-shadow:0 12px 26px rgba(0,0,0,.11);
 }
 
 .profile-copy{
   margin:0;
-  font-size:12.5px;
-  line-height:2;
+  font-size:12px;
+  line-height:1.95;
   color:#3f382f;
 }
 
-/* footer */
 .footer{
   position:relative;
   z-index:2;
-  min-height:230px;
-  padding:46px 30px 34px;
-  color:white;
+  padding:45px 30px 34px;
+  background:#15120f;
+  color:#fff;
   text-align:center;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(255,255,255,.10),transparent 34%),
-    #15120f;
 }
 
 .footer::before{
   content:"";
   position:absolute;
-  left:-50px;
-  top:-16px;
-  width:170px;
-  height:140px;
+  left:-54px;
+  top:-18px;
+  width:190px;
+  height:150px;
   border-radius:50%;
-  border:16px solid rgba(255,255,255,.06);
+  border:18px solid rgba(255,255,255,.055);
   transform:rotate(-24deg);
 }
 
@@ -346,61 +338,90 @@ a{
   position:relative;
   z-index:2;
   font-size:17px;
-  line-height:2.1;
-  letter-spacing:.17em;
-  color:rgba(255,255,255,.9);
+  line-height:2.05;
+  letter-spacing:.16em;
 }
 
 .footer-mark{
   width:46px;
   height:46px;
-  margin:24px auto 11px;
-  border:1px solid rgba(169,137,86,.72);
+  margin:23px auto 11px;
+  border:1px solid rgba(169,135,82,.72);
   border-radius:50%;
   display:grid;
   place-items:center;
-  color:rgba(169,137,86,.9);
+  color:rgba(169,135,82,.95);
 }
 
 .footer-brand{
   font-size:19px;
-  letter-spacing:.25em;
-  color:rgba(169,137,86,.96);
+  letter-spacing:.26em;
+  color:rgba(169,135,82,.95);
 }
 
 .footer-en{
   margin-top:8px;
   font:10px var(--sans);
   letter-spacing:.30em;
-  color:rgba(169,137,86,.72);
+  color:rgba(169,135,82,.7);
 }
 
-@media(max-width:380px){
+@media(max-width:390px){
   .header{
-    height:160px;
+    height:118px;
+  }
+
+  .brand{
+    top:22px;
+    left:29px;
+  }
+
+  .brand-jp{
+    font-size:18px;
   }
 
   .logo-orbit{
-    width:188px;
-    height:188px;
+    width:156px;
+    height:156px;
   }
 
-  .main-logo{
-    width:124px;
-    height:124px;
+  .logo{
+    width:104px;
+    height:104px;
+  }
+
+  .name-block{
+    margin-top:30px;
   }
 
   .jp-name{
-    font-size:34px;
+    font-size:31px;
+  }
+
+  .en-name{
+    font-size:11px;
+  }
+
+  .role{
+    font-size:12px;
+  }
+
+  .actions{
+    padding-top:18px;
+  }
+
+  .contact-btn{
+    height:56px;
+    font-size:13px;
   }
 
   .social{
-    height:102px;
+    height:94px;
     border-radius:20px;
   }
 
   .social-label{
-    font-size:11px;
+    font-size:10px;
   }
 }
 </style>
@@ -409,26 +430,25 @@ a{
 <body>
 <main class="page">
 
-  <div class="ink"></div>
+  <div class="sumi"></div>
 
   <header class="header">
     <div class="brand">
       <div class="brand-en">KANJITSUDŌ</div>
       <div class="brand-jp">還日堂</div>
     </div>
-
     <div class="seal">還</div>
   </header>
 
-  <section class="hero">
+  <section class="main">
     <div class="logo-orbit">
       <img
-        class="main-logo"
+        class="logo"
         src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
-        alt="還日堂">
+        alt="還日堂ロゴ">
     </div>
 
-    <div class="name-area">
+    <div class="name-block">
       <h1 class="jp-name">山中 一馬</h1>
       <div class="en-name">Kazuma Yamanaka</div>
       <div class="divider"></div>
@@ -485,9 +505,7 @@ a{
   </section>
 
   <footer class="footer">
-    <div class="footer-copy">
-      日常に、還る場所。
-    </div>
+    <div class="footer-copy">日常に、還る場所。</div>
     <div class="footer-mark">還</div>
     <div class="footer-brand">還日堂</div>
     <div class="footer-en">KANJITSUDŌ</div>
