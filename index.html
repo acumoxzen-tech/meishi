@@ -30,7 +30,7 @@ body{
 }
 .hotspot{
   position:absolute;
-  z-index:5;
+  z-index:10;
   display:block;
   background:rgba(255,255,255,0);
   border:0;
@@ -38,24 +38,33 @@ body{
   cursor:pointer;
   appearance:none;
 }
-.contact{left:11.0000%;top:65.5500%;width:78.0000%;height:5.7500%;border-radius:12px}
-.mail{left:10.9000%;top:73.5000%;width:23.8000%;height:10.0000%;border-radius:14px}
-.instagram{left:38.1000%;top:73.5000%;width:23.8000%;height:10.0000%;border-radius:14px}
-.line{left:65.3000%;top:73.5000%;width:23.8000%;height:10.0000%;border-radius:14px}
-.website{left:20.0000%;top:90.9967%;width:60.0000%;height:4.2000%;border-radius:999px}
-@media(min-width:431px){.page{box-shadow:0 30px 100px rgba(0,0,0,.14)}}
+/* デザイン画像には一切手を加えず、透明リンクだけ配置 */
+.contact{left:20.0%;top:67.15%;width:60.0%;height:5.2%;border-radius:12px}
+.mail{left:19.0%;top:74.55%;width:19.5%;height:7.4%;border-radius:14px}
+.instagram{left:40.3%;top:74.55%;width:19.5%;height:7.4%;border-radius:14px}
+.line{left:61.5%;top:74.55%;width:19.5%;height:7.4%;border-radius:14px}
+.website{left:19.0%;top:84.35%;width:62.0%;height:4.6%;border-radius:999px}
+@media(min-width:431px){
+  .page{box-shadow:0 30px 100px rgba(0,0,0,.14)}
+}
 </style>
 </head>
+
 <body>
 <main class="page">
-  <img class="design" src="assets/design.png" alt="山中一馬 鍼灸院還日堂 デジタル名刺">
+  <img class="design" src="design.png" alt="山中一馬 鍼灸院還日堂 デジタル名刺">
 
   <button class="hotspot contact" type="button" aria-label="連絡帳に登録する" onclick="saveContact()"></button>
+
   <a class="hotspot mail" href="mailto:acumox.zen@gmail.com" aria-label="Mail"></a>
+
   <a class="hotspot instagram" href="https://instagram.com/k__.z.__m" target="_blank" rel="noopener" aria-label="Instagram"></a>
-  <a class="hotspot line" href="https://line.me/ti/p/~kazuma.31" target="_blank" rel="noopener" aria-label="LINE"></a>
+
+  <a class="hotspot line" href="https://line.me/ti/p/_eYXUVPcDW" target="_blank" rel="noopener" aria-label="LINE"></a>
+
   <a class="hotspot website" href="https://acumoxzen-tech.github.io/kanjitsudo-site/#top" target="_blank" rel="noopener" aria-label="還日堂公式サイト"></a>
 </main>
+
 <script>
 function saveContact(){
   const vcard = `BEGIN:VCARD
@@ -66,9 +75,10 @@ ORG:鍼灸院 還日堂
 TITLE:鍼灸師
 TEL;TYPE=CELL:07083058788
 EMAIL:acumox.zen@gmail.com
-URL:https://kanjitsudo.jp
+URL:https://acumoxzen-tech.github.io/kanjitsudo-site/#top
 NOTE:鍼灸院 還日堂 / Kazuma Yamanaka
 END:VCARD`;
+
   const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
