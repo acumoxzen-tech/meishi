@@ -43,6 +43,8 @@ body{
   user-select:none;
   -webkit-user-drag:none;
   vertical-align:top;
+  transform:translateY(-34px);
+  margin-bottom:-34px;
 }
 .hotspot{
   position:absolute;
@@ -57,38 +59,38 @@ body{
   -webkit-appearance:none;
 }
 
-/* 画像デザインは触らず、透明リンクだけ配置 */
+/* 画像を上に 34px 詰めた分、リンク判定も同じだけ上へ補正 */
 .contact{
   left:19.0%;
-  top:66.5%;
+  top:calc(66.5% - 34px);
   width:62.0%;
   height:5.8%;
   border-radius:14px;
 }
 .mail{
   left:19.0%;
-  top:74.2%;
+  top:calc(74.2% - 34px);
   width:19.5%;
   height:7.6%;
   border-radius:14px;
 }
 .instagram{
   left:40.4%;
-  top:74.2%;
+  top:calc(74.2% - 34px);
   width:19.5%;
   height:7.6%;
   border-radius:14px;
 }
 .line{
   left:61.7%;
-  top:74.2%;
+  top:calc(74.2% - 34px);
   width:19.5%;
   height:7.6%;
   border-radius:14px;
 }
 .website{
   left:18.5%;
-  top:84.1%;
+  top:calc(84.1% - 34px);
   width:63.0%;
   height:4.8%;
   border-radius:999px;
@@ -119,8 +121,10 @@ body{
 function saveContact(){
   const vcard = `BEGIN:VCARD
 VERSION:3.0
-N:Yamanaka;Kazuma;;;
+N:山中;一馬;;;
 FN:山中 一馬
+X-PHONETIC-LAST-NAME:やまなか
+X-PHONETIC-FIRST-NAME:かずま
 ORG:鍼灸院 還日堂
 TITLE:鍼灸師
 TEL;TYPE=CELL:07083058788
