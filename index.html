@@ -4,13 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>山中 一馬 | 鍼灸院 還日堂</title>
+<meta name="description" content="鍼灸院 還日堂 院長 山中一馬のデジタル名刺。">
 
 <style>
 :root{
-  --ink:#15120f;
-  --soft:#776c5f;
-  --gold:#a88855;
+  --ink:#14110f;
+  --sub:#756c60;
+  --muted:#a2998d;
+  --gold:#a98752;
   --paper:#f7f0e5;
+  --paper2:#efe5d7;
   --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
@@ -23,10 +26,10 @@ html{
 
 body{
   margin:0;
-  background:#e8dfd2;
+  background:#eee6da;
   color:var(--ink);
   font-family:var(--serif);
-  letter-spacing:.05em;
+  letter-spacing:.045em;
 }
 
 a{
@@ -35,130 +38,156 @@ a{
 }
 
 .page{
+  position:relative;
   width:100%;
   max-width:430px;
   min-height:100svh;
   margin:0 auto;
-  position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 68% 18%,rgba(255,255,255,.96),transparent 25%),
-    linear-gradient(180deg,#fbf5eb 0%,#f2e8db 62%,#e3d6c4 100%);
+    radial-gradient(circle at 68% 22%,rgba(255,255,255,.92),transparent 22%),
+    linear-gradient(180deg,#fbf6ed 0%,#f6eee4 58%,#eadfce 100%);
 }
 
-/* 和紙テクスチャ */
+/* 和紙 */
 .page::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
-  opacity:.18;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  opacity:.16;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.76' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
   mix-blend-mode:multiply;
   pointer-events:none;
 }
 
-/* B案の左墨：かなり見えるように強め */
+/* B案の墨。棒ではなく左端の筆跡に寄せる */
 .sumi{
   position:absolute;
   z-index:1;
-  left:-64px;
-  top:0;
-  width:165px;
-  height:620px;
-  opacity:.72;
+  left:-86px;
+  top:-38px;
+  width:230px;
+  height:560px;
+  opacity:.45;
   pointer-events:none;
+  transform:rotate(-12deg);
 }
 
 .sumi::before{
   content:"";
   position:absolute;
-  left:0;
-  top:-30px;
-  width:150px;
-  height:560px;
-  border-radius:60% 45% 50% 60%;
+  inset:0;
   background:
-    radial-gradient(ellipse at 45% 4%,rgba(12,11,10,.92) 0 17%,transparent 32%),
-    radial-gradient(ellipse at 58% 22%,rgba(12,11,10,.70) 0 18%,transparent 38%),
-    radial-gradient(ellipse at 44% 48%,rgba(12,11,10,.48) 0 16%,transparent 38%),
-    radial-gradient(ellipse at 55% 78%,rgba(12,11,10,.22) 0 14%,transparent 34%),
-    linear-gradient(90deg,transparent 0 30%,rgba(12,11,10,.88) 41%,rgba(12,11,10,.18) 55%,transparent 69%);
-  transform:rotate(-7deg);
-  filter:blur(.2px);
+    radial-gradient(ellipse at 42% 3%,rgba(16,14,12,.88) 0 12%,transparent 28%),
+    radial-gradient(ellipse at 60% 18%,rgba(16,14,12,.56) 0 12%,transparent 32%),
+    radial-gradient(ellipse at 45% 42%,rgba(16,14,12,.36) 0 13%,transparent 35%),
+    radial-gradient(ellipse at 58% 68%,rgba(16,14,12,.22) 0 11%,transparent 32%),
+    radial-gradient(ellipse at 48% 92%,rgba(16,14,12,.16) 0 10%,transparent 28%);
+  filter:blur(.35px);
 }
 
 .sumi::after{
   content:"";
   position:absolute;
-  left:78px;
-  top:18px;
-  width:22px;
-  height:520px;
+  left:112px;
+  top:22px;
+  width:24px;
+  height:500px;
   border-radius:999px;
-  background:linear-gradient(180deg,rgba(8,7,6,.88),rgba(8,7,6,.03));
-  transform:rotate(-2deg);
-  filter:blur(7px);
+  background:linear-gradient(180deg,rgba(16,14,12,.68),rgba(16,14,12,.02));
+  filter:blur(10px);
 }
 
-/* 上部ロゴ */
+/* 右上の余白含むヘッダー */
 .header{
   position:relative;
   z-index:2;
-  height:116px;
-  padding:22px 28px 0;
+  height:168px;
+  padding:0 30px;
 }
 
-.brand{
+.brand-vertical{
   position:absolute;
-  left:31px;
-  top:24px;
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
+  top:50px;
+  left:72px;
+  writing-mode:vertical-rl;
+  font-size:14px;
+  line-height:1.9;
+  letter-spacing:.25em;
+  color:#17130f;
+}
+
+.brand-vertical .small{
+  display:block;
+  font-size:11px;
+  letter-spacing:.28em;
+  margin-bottom:16px;
+}
+
+.side-copy{
+  position:absolute;
+  left:34px;
+  top:96px;
+  writing-mode:vertical-rl;
+  font-size:13px;
+  line-height:2.15;
+  letter-spacing:.22em;
+  color:#27231f;
+}
+
+.side-line{
+  position:absolute;
+  left:45px;
+  top:278px;
+  width:1px;
+  height:98px;
+  background:rgba(169,135,82,.55);
 }
 
 .brand-en{
+  position:absolute;
+  top:61px;
+  left:16px;
   writing-mode:vertical-rl;
   font:10px var(--sans);
-  letter-spacing:.32em;
-  color:#8e867b;
-}
-
-.brand-jp{
-  writing-mode:vertical-rl;
-  font-size:21px;
-  line-height:1.58;
-  letter-spacing:.22em;
+  letter-spacing:.35em;
+  color:var(--muted);
 }
 
 .seal{
   position:absolute;
   right:29px;
-  top:34px;
-  width:27px;
-  height:27px;
-  display:grid;
-  place-items:center;
+  top:48px;
+  width:25px;
+  height:25px;
   border:1px solid #9b342d;
   color:#9b342d;
+  display:grid;
+  place-items:center;
   font-size:12px;
+  opacity:.9;
 }
 
-/* メイン */
+/* 中央部 */
 .main{
   position:relative;
   z-index:2;
   text-align:center;
-  padding:0 30px 0;
+  padding:0 44px 0;
+}
+
+.logo-space{
+  height:246px;
+  display:grid;
+  place-items:center;
 }
 
 .logo-orbit{
-  width:148px;
-  height:148px;
-  margin:0 auto;
-  position:relative;
+  width:106px;
+  height:106px;
   border-radius:50%;
+  position:relative;
   display:grid;
   place-items:center;
 }
@@ -166,97 +195,105 @@ a{
 .logo-orbit::before{
   content:"";
   position:absolute;
-  inset:0;
+  inset:-26px;
   border-radius:50%;
-  border:1px solid rgba(168,136,85,.50);
+  border:1px solid rgba(169,135,82,.35);
 }
 
 .logo-orbit::after{
   content:"";
   position:absolute;
-  inset:22px;
+  inset:-10px;
   border-radius:50%;
-  border:1px solid rgba(21,18,15,.05);
+  border:1px solid rgba(20,17,15,.045);
 }
 
 .logo{
-  width:98px;
-  height:98px;
+  width:88px;
+  height:88px;
   object-fit:contain;
-  opacity:.82;
-  filter:invert(1) brightness(.08) contrast(1.8) sepia(.15) saturate(.7);
+  opacity:.62;
+  filter:
+    invert(1)
+    brightness(.18)
+    contrast(1.35)
+    sepia(.18)
+    saturate(.7);
   mix-blend-mode:multiply;
 }
 
 .name-block{
-  margin-top:30px;
+  margin-top:18px;
 }
 
 .jp-name{
   margin:0;
-  font-size:34px;
-  line-height:1.18;
+  font-size:29px;
   font-weight:400;
-  letter-spacing:.17em;
+  letter-spacing:.20em;
+  line-height:1.25;
 }
 
 .en-name{
   margin-top:12px;
-  font:12px var(--sans);
-  letter-spacing:.28em;
-  color:var(--soft);
+  font:13px var(--sans);
+  letter-spacing:.25em;
+  color:var(--sub);
 }
 
-.divider{
-  width:34px;
+.short-line{
+  width:32px;
   height:1px;
-  margin:18px auto 0;
-  background:rgba(168,136,85,.70);
+  margin:20px auto 0;
+  background:rgba(169,135,82,.62);
 }
 
 .role{
-  margin-top:16px;
+  margin-top:17px;
   font-size:13px;
-  letter-spacing:.16em;
-  color:#2f2923;
+  letter-spacing:.18em;
+  color:#28231f;
 }
 
-/* アクション */
+/* ボタン群 */
 .actions{
   position:relative;
   z-index:2;
-  padding:36px 31px 34px;
+  padding:42px 44px 42px;
 }
 
 .contact-btn{
   width:100%;
-  height:56px;
+  height:52px;
   border:0;
-  border-radius:999px;
+  border-radius:10px;
   background:#15120f;
-  color:#fff;
-  font:700 14px var(--sans);
-  letter-spacing:.16em;
-  box-shadow:0 16px 34px rgba(0,0,0,.16);
+  color:white;
+  font:13px var(--sans);
+  letter-spacing:.18em;
   cursor:pointer;
+  box-shadow:0 16px 34px rgba(0,0,0,.13);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .socials{
-  margin-top:18px;
+  margin-top:22px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
+  gap:13px;
 }
 
 .social{
-  height:96px;
-  border-radius:21px;
-  background:rgba(255,255,255,.70);
-  border:1px solid rgba(255,255,255,.92);
+  height:91px;
+  border-radius:12px;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(255,255,255,.74);
   box-shadow:
-    0 12px 28px rgba(0,0,0,.045),
-    inset -3px -3px 8px rgba(255,255,255,.9),
-    inset 3px 3px 8px rgba(0,0,0,.025);
+    0 10px 28px rgba(0,0,0,.035),
+    inset -3px -3px 8px rgba(255,255,255,.86),
+    inset 3px 3px 8px rgba(0,0,0,.022);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -265,80 +302,118 @@ a{
 }
 
 .social svg{
-  width:26px;
-  height:26px;
-  stroke-width:1.4;
+  width:24px;
+  height:24px;
+  stroke-width:1.35;
 }
 
 .social-label{
-  font:11px var(--sans);
-  letter-spacing:.16em;
-  color:var(--soft);
+  font:12px var(--sans);
+  letter-spacing:.17em;
 }
 
-/* 下部 */
+/* B案の下部黒帯 */
 .footer{
   position:relative;
   z-index:2;
-  margin-top:8px;
-  padding:42px 30px 34px;
+  min-height:190px;
   background:#15120f;
   color:#fff;
   text-align:center;
+  padding:44px 30px 30px;
+  overflow:hidden;
 }
 
 .footer::before{
   content:"";
   position:absolute;
-  left:-60px;
-  top:-22px;
-  width:210px;
-  height:160px;
+  left:-64px;
+  top:-30px;
+  width:230px;
+  height:175px;
   border-radius:50%;
-  border:18px solid rgba(255,255,255,.06);
+  border:17px solid rgba(255,255,255,.06);
   transform:rotate(-22deg);
 }
 
-.footer-copy{
-  position:relative;
-  z-index:2;
-  font-size:16px;
-  line-height:2.05;
-  letter-spacing:.17em;
-}
-
 .footer-mark{
-  width:44px;
-  height:44px;
-  margin:23px auto 11px;
-  border:1px solid rgba(168,136,85,.75);
+  width:42px;
+  height:42px;
+  border:1px solid rgba(169,135,82,.72);
   border-radius:50%;
   display:grid;
   place-items:center;
-  color:rgba(168,136,85,.95);
+  margin:0 auto 22px;
+  color:rgba(169,135,82,.95);
+  font-size:17px;
 }
 
-.footer-brand{
-  font-size:18px;
-  letter-spacing:.25em;
-  color:rgba(168,136,85,.95);
+.footer-copy{
+  font-size:17px;
+  letter-spacing:.16em;
+  color:rgba(255,255,255,.88);
 }
 
 .footer-en{
-  margin-top:8px;
+  margin-top:15px;
   font:10px var(--sans);
-  letter-spacing:.30em;
-  color:rgba(168,136,85,.72);
+  letter-spacing:.28em;
+  color:rgba(169,135,82,.72);
 }
 
 @media(max-width:390px){
-  .header{height:106px}
-  .logo-orbit{width:136px;height:136px}
-  .logo{width:90px;height:90px}
-  .jp-name{font-size:30px}
-  .actions{padding-top:30px}
-  .social{height:88px;border-radius:19px}
-  .social-label{font-size:10px}
+  .header{
+    height:152px;
+  }
+
+  .brand-vertical{
+    top:42px;
+    left:68px;
+    font-size:13px;
+  }
+
+  .side-copy,
+  .side-line{
+    display:none;
+  }
+
+  .logo-space{
+    height:222px;
+  }
+
+  .logo-orbit{
+    width:96px;
+    height:96px;
+  }
+
+  .logo{
+    width:80px;
+    height:80px;
+  }
+
+  .jp-name{
+    font-size:25px;
+  }
+
+  .en-name{
+    font-size:11px;
+  }
+
+  .role{
+    font-size:11px;
+  }
+
+  .actions{
+    padding:34px 32px 36px;
+  }
+
+  .social{
+    height:82px;
+  }
+
+  .social-label{
+    font-size:10px;
+  }
 }
 </style>
 </head>
@@ -349,25 +424,30 @@ a{
   <div class="sumi"></div>
 
   <header class="header">
-    <div class="brand">
-      <div class="brand-en">KANJITSUDŌ</div>
-      <div class="brand-jp">還日堂</div>
+    <div class="brand-en">KANJITSUDŌ</div>
+    <div class="brand-vertical">
+      <span class="small">鍼灸院</span>
+      還日堂
     </div>
+    <div class="side-copy">日常に、還る場所。</div>
+    <div class="side-line"></div>
     <div class="seal">還</div>
   </header>
 
   <section class="main">
-    <div class="logo-orbit">
-      <img
-        class="logo"
-        src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
-        alt="還日堂ロゴ">
+    <div class="logo-space">
+      <div class="logo-orbit">
+        <img
+          class="logo"
+          src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779030104/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8818%E6%97%A5_00_00_07_xy3xk1.png"
+          alt="還日堂ロゴ">
+      </div>
     </div>
 
     <div class="name-block">
       <h1 class="jp-name">山中 一馬</h1>
       <div class="en-name">Kazuma Yamanaka</div>
-      <div class="divider"></div>
+      <div class="short-line"></div>
       <div class="role">鍼灸院 還日堂　院長</div>
     </div>
   </section>
@@ -406,9 +486,8 @@ a{
   </section>
 
   <footer class="footer">
-    <div class="footer-copy">日常に、還る場所。</div>
     <div class="footer-mark">還</div>
-    <div class="footer-brand">還日堂</div>
+    <div class="footer-copy">日常に、還る場所。</div>
     <div class="footer-en">KANJITSUDŌ</div>
   </footer>
 
