@@ -2,37 +2,139 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>還日堂</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>山中 一馬 | 鍼灸院 還日堂</title>
+<meta name="description" content="鍼灸院 還日堂 鍼灸師 山中一馬のデジタル名刺。">
+
 <style>
-body{margin:0;background:#eee;}
-.page{position:relative;max-width:430px;margin:0 auto;}
-.base{width:100%;display:block;}
-.logo{
- position:absolute;
- left:50%;
- top:29.7%;
- transform:translate(-50%,-50%);
- width:118px;
- height:118px;
- object-fit:contain;
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:#eee7dc;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
-.hotspot{position:absolute;background:transparent;}
-.contact{left:11%;top:65.55%;width:78%;height:5.75%;}
-.mail{left:11%;top:73.42%;width:23.7%;height:10.25%;}
-.instagram{left:38.1%;top:73.42%;width:23.7%;height:10.25%;}
-.line{left:65.3%;top:73.42%;width:23.7%;height:10.25%;}
+.page{
+  position:relative;
+  width:100%;
+  max-width:430px;
+  margin:0 auto;
+  background:#f6f0e5;
+  overflow:hidden;
+}
+.design{
+  display:block;
+  width:100%;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.hotspot{
+  position:absolute;
+  z-index:5;
+  display:block;
+  background:rgba(255,255,255,0);
+  border:0;
+  padding:0;
+  cursor:pointer;
+  appearance:none;
+}
+.contact{
+  left:11%;
+  top:65.55%;
+  width:78%;
+  height:5.75%;
+  border-radius:12px;
+}
+.mail{
+  left:11%;
+  top:73.42%;
+  width:23.7%;
+  height:10.25%;
+  border-radius:14px;
+}
+.instagram{
+  left:38.1%;
+  top:73.42%;
+  width:23.7%;
+  height:10.25%;
+  border-radius:14px;
+}
+.line{
+  left:65.3%;
+  top:73.42%;
+  width:23.7%;
+  height:10.25%;
+  border-radius:14px;
+}
+@media(min-width:431px){
+  .page{box-shadow:0 30px 100px rgba(0,0,0,.14)}
+}
 </style>
 </head>
-<body>
-<div class="page">
-<img class="base" src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1780027970/b-design-base.png" onerror="this.src='https://res.cloudinary.com/dvr7rww8q/image/upload/v1780027970/b-design-base.png'">
-<img class="logo" src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1780029305/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8829%E6%97%A5_13_34_53_ifomui.png">
 
-<a class="hotspot contact" href="#"></a>
-<a class="hotspot mail" href="mailto:info@kanjitsudo.jp"></a>
-<a class="hotspot instagram" href="https://instagram.com/"></a>
-<a class="hotspot line" href="https://line.me/"></a>
-</div>
+<body>
+<main class="page">
+
+  <img
+    class="design"
+    src="assets/b-design-final.png"
+    alt="山中一馬 鍼灸院還日堂 デジタル名刺">
+
+  <button
+    class="hotspot contact"
+    type="button"
+    aria-label="連絡帳に登録する"
+    onclick="saveContact()"></button>
+
+  <a
+    class="hotspot mail"
+    href="mailto:acumox.zen@gmail.com"
+    aria-label="Mail"></a>
+
+  <a
+    class="hotspot instagram"
+    href="https://instagram.com/k__.z.__m"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"></a>
+
+  <a
+    class="hotspot line"
+    href="https://line.me/ti/p/~kazuma.31"
+    target="_blank"
+    rel="noopener"
+    aria-label="LINE"></a>
+
+</main>
+
+<script>
+function saveContact(){
+  const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:Yamanaka;Kazuma;;;
+FN:山中 一馬
+ORG:鍼灸院 還日堂
+TITLE:鍼灸師
+TEL;TYPE=CELL:07083058788
+EMAIL:acumox.zen@gmail.com
+URL:https://kanjitsudo.jp
+NOTE:鍼灸院 還日堂 / Kazuma Yamanaka
+END:VCARD`;
+
+  const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+
+  a.href = url;
+  a.download = "yamanaka-kazuma.vcf";
+
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  URL.revokeObjectURL(url);
+}
+</script>
 </body>
 </html>
