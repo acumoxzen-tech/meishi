@@ -69,107 +69,21 @@ a{
 
 .hero{
   position:relative;
-  min-height:88svh;
-  padding:38px clamp(28px,7vw,72px);
-  display:flex;
-  align-items:center;
   overflow:hidden;
-  color:#fff;
   background:#15130f;
+  padding:0;
+  min-height:auto;
 }
 
 .hero-bg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center center;
-  filter:brightness(.84) contrast(1.03) saturate(.94);
-  transform:scale(1.01);
-}
-
-.hero-shade{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.14) 48%,rgba(0,0,0,.28)),
-    linear-gradient(180deg,rgba(0,0,0,.10),rgba(0,0,0,.34));
-  pointer-events:none;
-}
-
-.brand-small{
-  position:absolute;
-  z-index:2;
-  top:38px;
-  right:clamp(28px,7vw,72px);
-  text-align:right;
-  color:#fff;
-}
-
-.brand-small .jp{
-  font-size:14px;
-  letter-spacing:.34em;
-}
-
-.brand-small .en{
-  margin-top:10px;
-  font:10px/1 var(--sans);
-  letter-spacing:.28em;
-  color:rgba(255,255,255,.68);
-}
-
-.hero-main{
   position:relative;
-  z-index:2;
+  display:block;
   width:100%;
-  padding-top:32px;
-}
-
-.kicker{
-  writing-mode:vertical-rl;
-  position:absolute;
-  left:0;
-  top:-130px;
-  font-size:13px;
-  line-height:2;
-  letter-spacing:.24em;
-  color:rgba(255,255,255,.72);
-}
-
-.hero-name{
-  margin:0;
-  font-size:clamp(48px,8vw,88px);
-  font-weight:400;
-  letter-spacing:.14em;
-  line-height:1.18;
-  color:#fff;
-}
-
-.hero-roman{
-  margin-top:18px;
-  font:12px var(--sans);
-  letter-spacing:.32em;
-  color:rgba(255,255,255,.76);
-}
-
-.hero-role{
-  margin-top:34px;
-  padding-left:18px;
-  border-left:1px solid rgba(255,255,255,.24);
-  font-size:15px;
-  line-height:2.1;
-  color:rgba(255,255,255,.76);
-}
-
-.scroll-sign{
-  position:absolute;
-  z-index:2;
-  left:clamp(28px,7vw,72px);
-  bottom:34px;
-  font:10px var(--sans);
-  letter-spacing:.28em;
-  color:rgba(255,255,255,.58);
+  height:auto;
+  object-fit:contain;
+  object-position:center center;
+  filter:none;
+  transform:none;
 }
 
 /* PROFILE */
@@ -497,19 +411,6 @@ footer{
     box-shadow:none;
   }
 
-  .hero{
-    min-height:82svh;
-    padding:34px 28px;
-  }
-
-  .hero-name{
-    font-size:46px;
-  }
-
-  .hero-role{
-    font-size:13px;
-  }
-
   .profile{
 
     padding:52px 28px 48px;
@@ -566,23 +467,10 @@ footer{
 
 <section class="hero">
 
-  <img class="hero-bg" src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779978812/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8828%E6%97%A5_23_32_39_2_pom5uh.png" alt="">
-
-  <div class="hero-shade"></div>
-
-  <div class="brand-small">
-    <div class="jp">還日堂</div>
-    <div class="en">KANJITSUDŌ</div>
-  </div>
-
-  <div class="hero-main">
-    <div class="kicker">日常に、還る場所。</div>
-    <h1 class="hero-name">山中 一馬</h1>
-    <div class="hero-roman">Kazuma Yamanaka</div>
-    <div class="hero-role">鍼灸院 還日堂　院長</div>
-  </div>
-
-  <div class="scroll-sign">SCROLL</div>
+  <img
+  class="hero-bg"
+  src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1779978812/ChatGPT_Image_2026%E5%B9%B45%E6%9C%8828%E6%97%A5_23_32_39_2_pom5uh.png"
+  alt="">
 
 </section>
 
