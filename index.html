@@ -4,17 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>山中 一馬 | 鍼灸院 還日堂</title>
-<meta name="description" content="鍼灸院 還日堂 院長 山中一馬のデジタル名刺。">
 
 <style>
 :root{
   --ink:#15120f;
-  --sub:#746a5c;
-  --muted:#a79d8e;
-  --paper:#f6f0e5;
-  --paper2:#eee5d8;
-  --gold:#a98752;
-  --red:#a13a31;
+  --soft:#776c5f;
+  --gold:#a88855;
+  --paper:#f7f0e5;
   --serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
   --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
@@ -27,10 +23,10 @@ html{
 
 body{
   margin:0;
-  background:#eee7dc;
+  background:#e8dfd2;
   color:var(--ink);
   font-family:var(--serif);
-  letter-spacing:.045em;
+  letter-spacing:.05em;
 }
 
 a{
@@ -39,108 +35,113 @@ a{
 }
 
 .page{
-  position:relative;
   width:100%;
   max-width:430px;
   min-height:100svh;
   margin:0 auto;
+  position:relative;
   overflow:hidden;
   background:
-    radial-gradient(circle at 72% 16%,rgba(255,255,255,.95),transparent 25%),
-    radial-gradient(circle at 50% 46%,rgba(255,255,255,.78),transparent 23%),
-    linear-gradient(180deg,#f9f3e9 0%,#f3eadf 58%,#e9dece 100%);
+    radial-gradient(circle at 68% 18%,rgba(255,255,255,.96),transparent 25%),
+    linear-gradient(180deg,#fbf5eb 0%,#f2e8db 62%,#e3d6c4 100%);
 }
 
+/* 和紙テクスチャ */
 .page::before{
   content:"";
   position:absolute;
   inset:0;
   z-index:0;
-  opacity:.15;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  opacity:.18;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
   mix-blend-mode:multiply;
   pointer-events:none;
 }
 
-/* B案の墨をCSSだけで再現 */
+/* B案の左墨：かなり見えるように強め */
 .sumi{
   position:absolute;
   z-index:1;
-  left:-76px;
-  top:-26px;
-  width:170px;
-  height:470px;
-  opacity:.48;
-  transform:rotate(-9deg);
+  left:-64px;
+  top:0;
+  width:165px;
+  height:620px;
+  opacity:.72;
   pointer-events:none;
 }
 
 .sumi::before{
   content:"";
   position:absolute;
-  inset:0;
+  left:0;
+  top:-30px;
+  width:150px;
+  height:560px;
+  border-radius:60% 45% 50% 60%;
   background:
-    radial-gradient(ellipse at 42% 0%,rgba(19,17,15,.88) 0 13%,transparent 27%),
-    radial-gradient(ellipse at 55% 21%,rgba(19,17,15,.62) 0 14%,transparent 34%),
-    radial-gradient(ellipse at 42% 48%,rgba(19,17,15,.44) 0 13%,transparent 34%),
-    radial-gradient(ellipse at 53% 76%,rgba(19,17,15,.22) 0 12%,transparent 31%),
-    linear-gradient(90deg,transparent 0 32%,rgba(19,17,15,.72) 40%,rgba(19,17,15,.22) 50%,transparent 66%);
-  filter:blur(.15px);
+    radial-gradient(ellipse at 45% 4%,rgba(12,11,10,.92) 0 17%,transparent 32%),
+    radial-gradient(ellipse at 58% 22%,rgba(12,11,10,.70) 0 18%,transparent 38%),
+    radial-gradient(ellipse at 44% 48%,rgba(12,11,10,.48) 0 16%,transparent 38%),
+    radial-gradient(ellipse at 55% 78%,rgba(12,11,10,.22) 0 14%,transparent 34%),
+    linear-gradient(90deg,transparent 0 30%,rgba(12,11,10,.88) 41%,rgba(12,11,10,.18) 55%,transparent 69%);
+  transform:rotate(-7deg);
+  filter:blur(.2px);
 }
 
 .sumi::after{
   content:"";
   position:absolute;
-  left:94px;
-  top:22px;
-  width:18px;
-  height:420px;
+  left:78px;
+  top:18px;
+  width:22px;
+  height:520px;
   border-radius:999px;
-  background:linear-gradient(180deg,rgba(19,17,15,.70),rgba(19,17,15,.03));
-  filter:blur(9px);
+  background:linear-gradient(180deg,rgba(8,7,6,.88),rgba(8,7,6,.03));
+  transform:rotate(-2deg);
+  filter:blur(7px);
 }
 
-/* 上部 */
+/* 上部ロゴ */
 .header{
   position:relative;
   z-index:2;
-  height:132px;
-  padding:24px 28px 0;
+  height:116px;
+  padding:22px 28px 0;
 }
 
 .brand{
   position:absolute;
-  left:32px;
+  left:31px;
   top:24px;
   display:flex;
   align-items:flex-start;
-  gap:13px;
+  gap:12px;
 }
 
 .brand-en{
   writing-mode:vertical-rl;
   font:10px var(--sans);
-  letter-spacing:.34em;
-  color:var(--muted);
+  letter-spacing:.32em;
+  color:#8e867b;
 }
 
 .brand-jp{
   writing-mode:vertical-rl;
-  font-size:20px;
+  font-size:21px;
   line-height:1.58;
-  letter-spacing:.24em;
+  letter-spacing:.22em;
 }
 
 .seal{
   position:absolute;
   right:29px;
   top:34px;
-  width:26px;
-  height:26px;
-  border:1px solid var(--red);
-  color:var(--red);
+  width:27px;
+  height:27px;
   display:grid;
   place-items:center;
+  border:1px solid #9b342d;
+  color:#9b342d;
   font-size:12px;
 }
 
@@ -148,16 +149,16 @@ a{
 .main{
   position:relative;
   z-index:2;
-  padding:0 29px 28px;
   text-align:center;
+  padding:0 30px 0;
 }
 
 .logo-orbit{
-  width:174px;
-  height:174px;
+  width:148px;
+  height:148px;
   margin:0 auto;
-  border-radius:50%;
   position:relative;
+  border-radius:50%;
   display:grid;
   place-items:center;
 }
@@ -167,81 +168,76 @@ a{
   position:absolute;
   inset:0;
   border-radius:50%;
-  border:1px solid rgba(169,135,82,.42);
+  border:1px solid rgba(168,136,85,.50);
 }
 
 .logo-orbit::after{
   content:"";
   position:absolute;
-  inset:24px;
+  inset:22px;
   border-radius:50%;
   border:1px solid rgba(21,18,15,.05);
 }
 
 .logo{
-  width:114px;
-  height:114px;
+  width:98px;
+  height:98px;
   object-fit:contain;
-  opacity:.85;
-  filter:
-    invert(1)
-    brightness(.08)
-    contrast(1.75)
-    sepia(.16)
-    saturate(.7);
+  opacity:.82;
+  filter:invert(1) brightness(.08) contrast(1.8) sepia(.15) saturate(.7);
   mix-blend-mode:multiply;
 }
 
 .name-block{
-  margin-top:34px;
+  margin-top:30px;
 }
 
 .jp-name{
   margin:0;
-  font-size:36px;
+  font-size:34px;
+  line-height:1.18;
   font-weight:400;
-  line-height:1.2;
-  letter-spacing:.18em;
+  letter-spacing:.17em;
 }
 
 .en-name{
-  margin-top:13px;
-  font:13px var(--sans);
+  margin-top:12px;
+  font:12px var(--sans);
   letter-spacing:.28em;
-  color:var(--sub);
+  color:var(--soft);
 }
 
 .divider{
-  width:36px;
+  width:34px;
   height:1px;
-  margin:20px auto 0;
-  background:rgba(169,135,82,.68);
+  margin:18px auto 0;
+  background:rgba(168,136,85,.70);
 }
 
 .role{
-  margin-top:18px;
-  font-size:14px;
+  margin-top:16px;
+  font-size:13px;
   letter-spacing:.16em;
   color:#2f2923;
 }
 
-/* ボタン */
+/* アクション */
 .actions{
   position:relative;
   z-index:2;
-  padding:22px 31px 38px;
+  padding:36px 31px 34px;
 }
 
 .contact-btn{
   width:100%;
-  height:58px;
+  height:56px;
   border:0;
   border-radius:999px;
-  background:#14110e;
+  background:#15120f;
   color:#fff;
   font:700 14px var(--sans);
   letter-spacing:.16em;
-  box-shadow:0 16px 36px rgba(0,0,0,.15);
+  box-shadow:0 16px 34px rgba(0,0,0,.16);
   cursor:pointer;
 }
 
@@ -253,70 +249,39 @@ a{
 }
 
 .social{
-  height:104px;
-  border-radius:22px;
-  background:rgba(255,255,255,.68);
-  border:1px solid rgba(255,255,255,.9);
+  height:96px;
+  border-radius:21px;
+  background:rgba(255,255,255,.70);
+  border:1px solid rgba(255,255,255,.92);
   box-shadow:
-    0 12px 28px rgba(0,0,0,.04),
+    0 12px 28px rgba(0,0,0,.045),
     inset -3px -3px 8px rgba(255,255,255,.9),
     inset 3px 3px 8px rgba(0,0,0,.025);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:11px;
+  gap:10px;
 }
 
 .social svg{
-  width:27px;
-  height:27px;
-  stroke-width:1.45;
+  width:26px;
+  height:26px;
+  stroke-width:1.4;
 }
 
 .social-label{
-  font:12px var(--sans);
-  letter-spacing:.17em;
-  color:var(--sub);
+  font:11px var(--sans);
+  letter-spacing:.16em;
+  color:var(--soft);
 }
 
-/* 画面イメージに寄せるため、プロフィールは下に控えめ */
-.profile{
-  position:relative;
-  z-index:2;
-  padding:0 31px 46px;
-}
-
-.profile-card{
-  padding:20px 19px;
-  border-radius:24px;
-  background:rgba(255,255,255,.36);
-  border:1px solid rgba(255,255,255,.62);
-  display:grid;
-  grid-template-columns:74px 1fr;
-  gap:17px;
-  align-items:center;
-}
-
-.portrait{
-  width:74px;
-  height:74px;
-  border-radius:50%;
-  object-fit:cover;
-  box-shadow:0 12px 26px rgba(0,0,0,.11);
-}
-
-.profile-copy{
-  margin:0;
-  font-size:12px;
-  line-height:1.95;
-  color:#3f382f;
-}
-
+/* 下部 */
 .footer{
   position:relative;
   z-index:2;
-  padding:45px 30px 34px;
+  margin-top:8px;
+  padding:42px 30px 34px;
   background:#15120f;
   color:#fff;
   text-align:center;
@@ -325,104 +290,55 @@ a{
 .footer::before{
   content:"";
   position:absolute;
-  left:-54px;
-  top:-18px;
-  width:190px;
-  height:150px;
+  left:-60px;
+  top:-22px;
+  width:210px;
+  height:160px;
   border-radius:50%;
-  border:18px solid rgba(255,255,255,.055);
-  transform:rotate(-24deg);
+  border:18px solid rgba(255,255,255,.06);
+  transform:rotate(-22deg);
 }
 
 .footer-copy{
   position:relative;
   z-index:2;
-  font-size:17px;
+  font-size:16px;
   line-height:2.05;
-  letter-spacing:.16em;
+  letter-spacing:.17em;
 }
 
 .footer-mark{
-  width:46px;
-  height:46px;
+  width:44px;
+  height:44px;
   margin:23px auto 11px;
-  border:1px solid rgba(169,135,82,.72);
+  border:1px solid rgba(168,136,85,.75);
   border-radius:50%;
   display:grid;
   place-items:center;
-  color:rgba(169,135,82,.95);
+  color:rgba(168,136,85,.95);
 }
 
 .footer-brand{
-  font-size:19px;
-  letter-spacing:.26em;
-  color:rgba(169,135,82,.95);
+  font-size:18px;
+  letter-spacing:.25em;
+  color:rgba(168,136,85,.95);
 }
 
 .footer-en{
   margin-top:8px;
   font:10px var(--sans);
   letter-spacing:.30em;
-  color:rgba(169,135,82,.7);
+  color:rgba(168,136,85,.72);
 }
 
 @media(max-width:390px){
-  .header{
-    height:118px;
-  }
-
-  .brand{
-    top:22px;
-    left:29px;
-  }
-
-  .brand-jp{
-    font-size:18px;
-  }
-
-  .logo-orbit{
-    width:156px;
-    height:156px;
-  }
-
-  .logo{
-    width:104px;
-    height:104px;
-  }
-
-  .name-block{
-    margin-top:30px;
-  }
-
-  .jp-name{
-    font-size:31px;
-  }
-
-  .en-name{
-    font-size:11px;
-  }
-
-  .role{
-    font-size:12px;
-  }
-
-  .actions{
-    padding-top:18px;
-  }
-
-  .contact-btn{
-    height:56px;
-    font-size:13px;
-  }
-
-  .social{
-    height:94px;
-    border-radius:20px;
-  }
-
-  .social-label{
-    font-size:10px;
-  }
+  .header{height:106px}
+  .logo-orbit{width:136px;height:136px}
+  .logo{width:90px;height:90px}
+  .jp-name{font-size:30px}
+  .actions{padding-top:30px}
+  .social{height:88px;border-radius:19px}
+  .social-label{font-size:10px}
 }
 </style>
 </head>
@@ -489,21 +405,6 @@ a{
     </div>
   </section>
 
-  <section class="profile">
-    <div class="profile-card">
-      <img
-        class="portrait"
-        src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1778986402/IMG_9882_fsx375.jpg"
-        alt="山中 一馬">
-
-      <p class="profile-copy">
-        からだの声に耳を澄ませ、<br>
-        日々の緊張をほどき、<br>
-        その人らしい巡りへ還す。
-      </p>
-    </div>
-  </section>
-
   <footer class="footer">
     <div class="footer-copy">日常に、還る場所。</div>
     <div class="footer-mark">還</div>
@@ -530,14 +431,11 @@ END:VCARD`;
   const blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-
   a.href = url;
   a.download = "yamanaka-kazuma.vcf";
-
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-
   URL.revokeObjectURL(url);
 }
 </script>
