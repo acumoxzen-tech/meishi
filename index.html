@@ -142,7 +142,7 @@
     .hero {
       min-height: 74svh;
       display: grid;
-      grid-template-columns: 1fr auto auto;
+      grid-template-columns: auto auto auto;
       column-gap: 28px;
       align-items: center;
       justify-content: center;
@@ -163,7 +163,7 @@
     }
 
     .name {
-      font-family: "Kaisei Opti", serif;
+      font-family: "Kaisei Opti", serif !important;
       writing-mode: vertical-rl;
       font-size: clamp(52px, 15vw, 76px);
       letter-spacing: .16em;
@@ -173,6 +173,7 @@
     }
 
     .name span {
+      font-family: "Kaisei Opti", serif !important;
       display: inline-block;
       opacity: 0;
       transform: translateY(20px);
