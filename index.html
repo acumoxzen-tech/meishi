@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Kaisei+Opti:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Kaisei+Opti:wght@400;500;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -67,7 +67,7 @@
       height: min(92vw, 420px);
       display: grid;
       place-items: center;
-      animation: logoFadeToBg 3s ease forwards 4.8s;
+      animation: logoFadeToBg 2s ease forwards 4.3s;
     }
 
     .opening-stage img {
@@ -97,7 +97,7 @@
       opacity: 0;
       transform: scale(.985);
       filter: blur(5px);
-      animation: logoIn 2s ease forwards 2.8s;
+      animation: logoIn 1.5s ease forwards 2.8s;
       z-index: 1;
     }
 
@@ -160,20 +160,21 @@
       line-height: 2;
       opacity: 0;
       transform: translateY(18px);
-      animation: fadeUp .9s ease forwards 8.25s;
+      animation: fadeUp .9s ease forwards 6.65s;
     }
 
     .name {
-      font-family: "Shippori Mincho", serif !important;
+      font-family: "Yuji Syuku", serif !important;
       writing-mode: vertical-rl;
       font-size: clamp(52px, 15vw, 76px);
       letter-spacing: .16em;
       line-height: 1.1;
-      font-weight: 400;
+      font-weight: 500;
       margin: 0;
     }
 
     .name span {
+      font-family: "Yuji Syuku", serif !important;
       font-family: "Kaisei Opti", serif !important;
       display: inline-block;
       opacity: 0;
@@ -182,10 +183,10 @@
       animation: letterIn .7s cubic-bezier(.2,.9,.2,1) forwards;
     }
 
-    .name span:nth-child(1) { animation-delay: 8.15s; }
-    .name span:nth-child(2) { animation-delay: 8.23s; }
-    .name span:nth-child(3) { animation-delay: 8.31s; }
-    .name span:nth-child(4) { animation-delay: 8.39s; }
+    .name span:nth-child(1) { animation-delay: 6.55s; }
+    .name span:nth-child(2) { animation-delay: 6.63s; }
+    .name span:nth-child(3) { animation-delay: 6.71s; }
+    .name span:nth-child(4) { animation-delay: 6.79s; }
 
     .copy {
       writing-mode: vertical-rl;
@@ -197,7 +198,7 @@
       margin: 0;
       opacity: 0;
       transform: translateY(22px);
-      animation: fadeUp .9s ease forwards 8.58s;
+      animation: fadeUp .9s ease forwards 6.98s;
     }
 
     .seal {
@@ -233,7 +234,7 @@
       box-shadow: 0 26px 80px rgba(83,61,30,.12);
       opacity: 0;
       transform: translateY(22px);
-      animation: fadeUp .9s ease forwards 8.92s;
+      animation: fadeUp .9s ease forwards 7.32s;
     }
 
     .profile-head {
