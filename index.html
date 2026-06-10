@@ -31,22 +31,22 @@ a{color:inherit;text-decoration:none}
 .hero{
   position:relative;min-height:116svh;min-height:116vh;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-  padding:max(42px,env(safe-area-inset-top)) 28px 205px;
+  padding:max(42px,env(safe-area-inset-top)) 28px 94px;
   overflow:hidden;background:var(--hero);isolation:isolate;
 }
 /* TOP画像そのものだけを使用。CSSの影・疑似影は一切なし */
 .hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center -85px;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transform:translateY(-85px);
   z-index:-1;display:block;pointer-events:none;
 }
-.brand{text-align:center;margin-bottom:70px;transform:translateY(-3vh)}
+.brand{text-align:center;margin-bottom:70px;transform:translateY(calc(-1.5vh - 85px))}
 .name{font-size:clamp(42px,11.2vw,60px);font-weight:400;letter-spacing:.32em;margin:0 0 12px;line-height:1.18;text-indent:.32em;text-shadow:0 1px 12px rgba(0,0,0,.18)}
 .role{font-family:Georgia,serif;font-size:15px;letter-spacing:.22em;color:var(--muted)}
 .social-icons{display:flex;gap:24px;justify-content:center;margin-top:34px}
 .icon{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:rgba(86,81,77,.05);transition:transform .5s var(--ease),border-color .5s var(--ease),background .5s var(--ease)}
 .icon:hover{transform:translateY(-4px);border-color:rgba(246,241,235,.76);background:rgba(255,255,255,.06)}
 .icon svg{width:19px;height:19px;stroke-width:1.45}
-.scroll{position:absolute;bottom:118px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(246,241,235,.64);font-size:10px;letter-spacing:.28em;font-family:Georgia,serif}
+.scroll{position:absolute;bottom:127px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(246,241,235,.64);font-size:10px;letter-spacing:.28em;font-family:Georgia,serif}
 .scroll::before{content:"";width:1px;height:34px;background:var(--line)}
 .scroll span{display:block;width:9px;height:9px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
 section{padding:68px 34px}
