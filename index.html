@@ -39,7 +39,7 @@ a{color:inherit;text-decoration:none}
   position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transform:translateY(-85px);
   z-index:-1;display:block;pointer-events:none;
 }
-.brand{text-align:center;margin-bottom:70px;transform:translateY(calc(-1.5vh - 260px))}
+.brand{text-align:center;margin-bottom:70px;transform:translateY(calc(-1.5vh - 110px))}
 .name{font-size:clamp(42px,11.2vw,60px);font-weight:400;letter-spacing:.32em;margin:0 0 12px;line-height:1.18;text-indent:.32em;text-shadow:0 1px 12px rgba(0,0,0,.18)}
 .role{font-family:Georgia,serif;font-size:15px;letter-spacing:.22em;color:var(--muted)}
 .role.location{margin-top:7px}
@@ -68,6 +68,14 @@ section{padding:68px 34px}
 .arrow{font-size:20px;line-height:1;opacity:.8}
 footer{padding:34px 24px 52px;text-align:center;background:#3f3b37;color:rgba(246,241,235,.62);font-family:Georgia,serif;font-size:12px;letter-spacing:.32em}
 footer::before{content:"";display:block;width:1px;height:44px;background:var(--line);margin:0 auto 28px}
+
+.brand{opacity:0;animation:brandFade 1.2s ease forwards;animation-delay:.8s}
+.role{opacity:0;animation:roleFade 1s ease forwards;animation-delay:1.2s}
+.scroll{opacity:0;animation:scrollFade 1s ease forwards;animation-delay:1.5s}
+@keyframes brandFade{from{opacity:0}to{opacity:1}}
+@keyframes roleFade{from{opacity:0}to{opacity:1}}
+@keyframes scrollFade{from{opacity:0}to{opacity:1}}
+
 @media (max-width:380px){.profile-card{grid-template-columns:92px 1fr;gap:22px}.portrait{width:92px;height:92px;font-size:24px}.bio{padding-left:114px}.social-icons{gap:18px}}
 </style>
 </head>
