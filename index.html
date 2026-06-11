@@ -55,7 +55,7 @@ section{padding:68px 34px}
 .section-title{font-family:Georgia,serif;font-size:12px;letter-spacing:.24em;font-weight:400;margin:0 0 38px;text-align:center}
 .section-title::after{content:"";display:block;width:38px;height:1px;background:currentColor;opacity:.35;margin:9px auto 0}
 .profile-card{display:grid;grid-template-columns:112px 1fr;gap:28px;align-items:center;max-width:390px;margin:0 auto}
-.portrait{width:112px;height:112px;border-radius:50%;background:linear-gradient(135deg,#c9c1b6,#f1eee8);display:grid;place-items:center;color:rgba(56,53,50,.62);font-size:30px;letter-spacing:.16em;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.portrait{width:112px;height:112px;border-radius:50%;background:none !important;display:grid;place-items:center;color:rgba(56,53,50,.62);font-size:30px;letter-spacing:.16em;box-shadow:0 12px 30px rgba(0,0,0,.08)}
 .p-role{font-family:Georgia,serif;font-size:12px;letter-spacing:.14em;color:var(--paper-muted);margin:0 0 10px}
 .p-name{font-size:28px;font-weight:400;letter-spacing:.18em;margin:0 0 8px;line-height:1.2}
 .roman{font-family:Georgia,serif;font-size:12px;letter-spacing:.18em;color:var(--paper-muted);margin:0}
@@ -95,7 +95,7 @@ footer::before{display:none}
   height:34px !important;
 }
 .scroll span{
-  display:block !important;
+  display:block !important;transform:scale(1.01) !important;
   width:9px !important;
   height:9px !important;
   border-right:1px solid currentColor !important;
@@ -139,8 +139,8 @@ footer::before{display:none}
   height:154px !important;
   border-radius:22px !important;
   overflow:hidden !important;
-  margin-top:-8px !important;
-  background:linear-gradient(135deg,#c9c1b6,#f1eee8);
+  margin-top:18px !important;
+  background:none !important;
 }
 .portrait img{
   width:100% !important;
@@ -148,7 +148,7 @@ footer::before{display:none}
   object-fit:cover !important;
   object-position:center top !important;
   border-radius:22px !important;
-  display:block !important;
+  display:block !important;transform:scale(1.01) !important;
 }
 .bio{
   max-width:none !important;
@@ -184,7 +184,9 @@ footer::before{display:none}
 
 
 
-/* TOP name visibility fixed */
+
+
+/* TOP staged fade final */
 .hero .brand{
   opacity:1 !important;
   visibility:visible !important;
@@ -192,16 +194,24 @@ footer::before{display:none}
 }
 .hero .brand .name,
 .hero .brand .role{
-  opacity:1 !important;
+  opacity:0;
   visibility:visible !important;
   animation:none !important;
+  transition:opacity 3.8s ease !important;
 }
-body:not(.top-loaded) .hero .brand{
-  opacity:0 !important;
+.hero .brand .role{
+  transition-duration:3.2s !important;
 }
-body.top-loaded .hero .brand{
+body.top-loaded .hero .brand .name{
   opacity:1 !important;
-  transition:opacity 4.2s ease !important;
+}
+body.top-loaded .hero .brand .role:nth-of-type(1){
+  opacity:1 !important;
+  transition-delay:1.8s !important;
+}
+body.top-loaded .hero .brand .role:nth-of-type(2){
+  opacity:1 !important;
+  transition-delay:2.4s !important;
 }
 
 </style>
@@ -266,6 +276,7 @@ body.top-loaded .hero .brand{
 </script>
 
 
+
 <script>
 (() => {
   const showTopName = () => {
@@ -278,7 +289,7 @@ body.top-loaded .hero .brand{
   } else {
     setTimeout(showTopName, 900);
   }
-  setTimeout(showTopName, 2500);
+  setTimeout(showTopName, 2200);
 })();
 </script>
 
