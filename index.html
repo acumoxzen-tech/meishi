@@ -69,8 +69,8 @@ section{padding:68px 34px}
 footer{padding:34px 24px 52px;text-align:center;background:#3f3b37;color:rgba(246,241,235,.62);font-family:Georgia,serif;font-size:12px;letter-spacing:.32em}
 footer::before{display:none}
 
-.brand{opacity:0;animation:brandFade 1.2s ease forwards;animation-delay:.8s}
-.role{opacity:0;animation:roleFade 1s ease forwards;animation-delay:1.2s}
+.brand{opacity:1 !important;animation:none !important;}
+.role{opacity:1 !important;animation:none !important;}
 .scroll{opacity:0;animation:scrollFade 1s ease forwards;animation-delay:1.5s}
 @keyframes brandFade{from{opacity:0}to{opacity:1}}
 @keyframes roleFade{from{opacity:0}to{opacity:1}}
@@ -182,20 +182,26 @@ footer::before{display:none}
 
 
 
-/* TOP name fade safe final */
+
+
+/* TOP name visibility fixed */
 .hero .brand{
-  opacity:0 !important;
-  animation:topBrandOpacityFade 3.8s ease forwards !important;
-  animation-delay:.9s !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  animation:none !important;
 }
 .hero .brand .name,
 .hero .brand .role{
   opacity:1 !important;
+  visibility:visible !important;
   animation:none !important;
 }
-@keyframes topBrandOpacityFade{
-  0%{opacity:0}
-  100%{opacity:1}
+body:not(.top-loaded) .hero .brand{
+  opacity:0 !important;
+}
+body.top-loaded .hero .brand{
+  opacity:1 !important;
+  transition:opacity 4.2s ease !important;
 }
 
 </style>
@@ -256,6 +262,23 @@ footer::before{display:none}
 
   updateScrollHint();
   window.addEventListener('scroll', requestUpdate, { passive: true });
+})();
+</script>
+
+
+<script>
+(() => {
+  const showTopName = () => {
+    document.body.classList.add('top-loaded');
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(showTopName, 900);
+    });
+  } else {
+    setTimeout(showTopName, 900);
+  }
+  setTimeout(showTopName, 2500);
 })();
 </script>
 
