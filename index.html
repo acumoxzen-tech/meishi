@@ -77,6 +77,41 @@ footer::before{display:none}
 @keyframes scrollFade{from{opacity:0}to{opacity:1}}
 
 @media (max-width:380px){.profile-card{grid-template-columns:92px 1fr;gap:22px}.portrait{width:92px;height:92px;font-size:24px}.bio{padding-left:114px}.social-icons{gap:18px}}
+
+/* Scroll hint tuning */
+.scroll{
+  bottom:46px !important;
+  transition:opacity .7s ease, transform .7s ease;
+}
+.scroll::before{
+  height:18px !important;
+}
+.scroll span{
+  display:block !important;
+  width:11px !important;
+  height:11px !important;
+  border-right:1px solid currentColor !important;
+  border-bottom:1px solid currentColor !important;
+  transform:rotate(45deg);
+  animation:scrollArrowFloat 1.8s ease-in-out infinite !important;
+  will-change:transform, opacity;
+}
+@keyframes scrollArrowFloat{
+  0%,100%{
+    transform:rotate(45deg) translate(0,0);
+    opacity:.45;
+  }
+  50%{
+    transform:rotate(45deg) translate(5px,5px);
+    opacity:1;
+  }
+}
+body.is-scrolled .scroll{
+  opacity:0 !important;
+  transform:translateX(-50%) translateY(10px) !important;
+  pointer-events:none !important;
+}
+
 </style>
 </head>
 <body>
@@ -109,5 +144,16 @@ footer::before{display:none}
   </section>
   <footer><img src="footer-logo.png" alt="logo" style="width:76px;opacity:.9"></footer>
 </main>
+
+<script>
+(() => {
+  const updateScrollHint = () => {
+    document.body.classList.toggle('is-scrolled', window.scrollY > 24);
+  };
+  updateScrollHint();
+  window.addEventListener('scroll', updateScrollHint, { passive: true });
+})();
+</script>
+
 </body>
 </html>
