@@ -186,7 +186,9 @@ footer::before{display:none}
 
 
 
-/* TOP staged fade final */
+
+
+/* TOP staged fade fixed */
 .hero .brand{
   opacity:1 !important;
   visibility:visible !important;
@@ -194,10 +196,14 @@ footer::before{display:none}
 }
 .hero .brand .name,
 .hero .brand .role{
-  opacity:0;
+  opacity:0 !important;
   visibility:visible !important;
   animation:none !important;
-  transition:opacity 3.8s ease !important;
+  transition-property:opacity !important;
+  transition-timing-function:ease !important;
+}
+.hero .brand .name{
+  transition-duration:4.2s !important;
 }
 .hero .brand .role{
   transition-duration:3.2s !important;
@@ -211,7 +217,7 @@ body.top-loaded .hero .brand .role:nth-of-type(1){
 }
 body.top-loaded .hero .brand .role:nth-of-type(2){
   opacity:1 !important;
-  transition-delay:2.4s !important;
+  transition-delay:2.5s !important;
 }
 
 </style>
@@ -277,19 +283,23 @@ body.top-loaded .hero .brand .role:nth-of-type(2){
 
 
 
+
 <script>
 (() => {
-  const showTopName = () => {
+  const startTopFade = () => {
     document.body.classList.add('top-loaded');
   };
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(showTopName, 900);
+      setTimeout(startTopFade, 900);
     });
   } else {
-    setTimeout(showTopName, 900);
+    setTimeout(startTopFade, 900);
   }
-  setTimeout(showTopName, 2200);
+
+  // 保険：何らかの理由でDOMContentLoaded側が走らなくても表示させる
+  setTimeout(startTopFade, 2500);
 })();
 </script>
 
