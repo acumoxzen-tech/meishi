@@ -180,35 +180,22 @@ footer::before{display:none}
 }
 
 
-/* TOP name slow fade final */
+
+
+/* TOP name fade safe final */
 .hero .brand{
   opacity:0 !important;
-  animation:topNameSlowFade 4.8s ease forwards !important;
-  animation-delay:1.6s !important;
-  will-change:opacity, transform;
+  animation:topBrandOpacityFade 3.8s ease forwards !important;
+  animation-delay:.9s !important;
 }
+.hero .brand .name,
 .hero .brand .role{
-  opacity:0 !important;
-  animation:topRoleSlowFade 3.2s ease forwards !important;
-  animation-delay:3.0s !important;
+  opacity:1 !important;
+  animation:none !important;
 }
-@keyframes topNameSlowFade{
-  from{
-    opacity:0;
-    transform:translateY(8px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-@keyframes topRoleSlowFade{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
+@keyframes topBrandOpacityFade{
+  0%{opacity:0}
+  100%{opacity:1}
 }
 
 </style>
