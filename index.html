@@ -81,6 +81,7 @@ footer::before{display:none}
 
 
 
+
 /* Scroll hint tuning */
 .scroll{
   bottom:120px !important;
@@ -95,34 +96,43 @@ footer::before{display:none}
   height:34px !important;
 }
 .scroll span{
-  display:block !important;transform:scale(1.01) !important;
-  width:9px !important;
-  height:9px !important;
-  border-right:1px solid currentColor !important;
-  border-bottom:1px solid currentColor !important;
-  transform:translateY(0) rotate(45deg);
+  display:block !important;
+  width:18px !important;
+  height:14px !important;
+  border:0 !important;
+  position:relative !important;
+  transform:none !important;
   animation:scrollArrowFloat 2.4s cubic-bezier(.45,0,.25,1) infinite !important;
   will-change:transform, opacity;
 }
+.scroll span::before{
+  content:"" !important;
+  position:absolute !important;
+  left:50% !important;
+  top:0 !important;
+  width:10px !important;
+  height:10px !important;
+  border-right:1px solid currentColor !important;
+  border-bottom:1px solid currentColor !important;
+  transform:translateX(-50%) rotate(45deg) !important;
+}
 @keyframes scrollArrowFloat{
   0%,100%{
-    transform:translateY(0) rotate(45deg);
+    transform:translateY(0);
     opacity:.55;
   }
   50%{
-    transform:translateY(7px) rotate(45deg);
+    transform:translateY(7px);
     opacity:1;
   }
 }
 @media (prefers-reduced-motion: reduce){
   .scroll span{animation:none !important}
 }
-
-
 /* PROFILE final alignment */
 .profile{
-  padding-top:48px !important;
-  padding-bottom:42px !important;
+  padding-top:40px !important;
+  padding-bottom:70px !important;
 }
 .profile-card{
   grid-template-columns:126px 1fr !important;
