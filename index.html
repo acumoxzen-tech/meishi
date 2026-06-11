@@ -81,18 +81,19 @@ footer::before{display:none}
 
 /* Scroll hint tuning */
 .scroll{
-  bottom:86px !important;
-  gap:8px !important;
+  bottom:120px !important;
+  gap:10px !important;
+  font-size:10px !important;
   opacity:1;
   transition:opacity .7s ease, transform .7s ease;
 }
 .scroll::before{
-  height:16px !important;
+  height:34px !important;
 }
 .scroll span{
   display:block !important;
-  width:11px !important;
-  height:11px !important;
+  width:9px !important;
+  height:9px !important;
   border-right:1px solid currentColor !important;
   border-bottom:1px solid currentColor !important;
   transform:rotate(45deg);
@@ -120,16 +121,49 @@ body.is-scrolled .scroll{
   padding-bottom:56px !important;
 }
 .profile-card{
-  gap:20px !important;
+  grid-template-columns:126px 1fr !important;
+  gap:40px !important;
+  align-items:center !important;
+}
+.profile-card > div:nth-child(2){
+  transform:translateX(6px);
+}
+.portrait{
+  width:126px !important;
+  height:154px !important;
+  border-radius:22px !important;
+  overflow:hidden !important;
+  background:linear-gradient(135deg,#c9c1b6,#f1eee8);
+}
+.portrait img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center top !important;
+  border-radius:22px !important;
+  display:block !important;
 }
 .bio{
-  margin:20px auto 0 !important;
+  margin:24px auto 0 !important;
   line-height:1.8 !important;
 }
 .bio::before{
   margin:0 0 14px !important;
 }
-
+@media (max-width:380px){
+  .profile-card{
+    grid-template-columns:108px 1fr !important;
+    gap:30px !important;
+  }
+  .portrait{
+    width:108px !important;
+    height:136px !important;
+    border-radius:20px !important;
+  }
+  .portrait img{
+    border-radius:20px !important;
+  }
+}
 </style>
 </head>
 <body>
