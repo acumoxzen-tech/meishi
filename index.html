@@ -79,13 +79,14 @@ footer::before{display:none}
 @media (max-width:380px){.profile-card{grid-template-columns:92px 1fr;gap:22px}.portrait{width:92px;height:92px;font-size:24px}.bio{padding-left:114px}.social-icons{gap:18px}}
 
 
+
 /* Scroll hint tuning */
 .scroll{
   bottom:120px !important;
   gap:10px !important;
   font-size:10px !important;
   opacity:1;
-  transition:opacity .7s ease, transform .7s ease;
+  transition:opacity 1.1s ease, transform 1.1s ease;
 }
 .scroll::before{
   height:34px !important;
@@ -96,24 +97,27 @@ footer::before{display:none}
   height:9px !important;
   border-right:1px solid currentColor !important;
   border-bottom:1px solid currentColor !important;
-  transform:rotate(45deg);
-  animation:scrollArrowFloat 1.8s ease-in-out infinite !important;
+  transform:translateY(0) rotate(45deg);
+  animation:scrollArrowFloat 2.4s cubic-bezier(.45,0,.25,1) infinite !important;
   will-change:transform, opacity;
 }
 @keyframes scrollArrowFloat{
   0%,100%{
-    transform:rotate(45deg) translate(0,0);
-    opacity:.45;
+    transform:translateY(0) rotate(45deg);
+    opacity:.55;
   }
   50%{
-    transform:rotate(45deg) translate(5px,5px);
+    transform:translateY(7px) rotate(45deg);
     opacity:1;
   }
 }
 body.is-scrolled .scroll{
   opacity:0 !important;
-  transform:translateX(-50%) translateY(10px) !important;
+  transform:translateX(-50%) translateY(16px) !important;
   pointer-events:none !important;
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll span{animation:none !important}
 }
 /* PROFILE compact tuning */
 .profile{
@@ -200,7 +204,7 @@ body.is-scrolled .scroll{
 <script>
 (() => {
   const updateScrollHint = () => {
-    document.body.classList.toggle('is-scrolled', window.scrollY > 24);
+    document.body.classList.toggle('is-scrolled', window.scrollY > 110);
   };
   updateScrollHint();
   window.addEventListener('scroll', updateScrollHint, { passive: true });
