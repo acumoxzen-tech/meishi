@@ -78,13 +78,16 @@ footer::before{display:none}
 
 @media (max-width:380px){.profile-card{grid-template-columns:92px 1fr;gap:22px}.portrait{width:92px;height:92px;font-size:24px}.bio{padding-left:114px}.social-icons{gap:18px}}
 
+
 /* Scroll hint tuning */
 .scroll{
-  bottom:46px !important;
+  bottom:86px !important;
+  gap:8px !important;
+  opacity:1;
   transition:opacity .7s ease, transform .7s ease;
 }
 .scroll::before{
-  height:18px !important;
+  height:16px !important;
 }
 .scroll span{
   display:block !important;
@@ -111,8 +114,6 @@ body.is-scrolled .scroll{
   transform:translateX(-50%) translateY(10px) !important;
   pointer-events:none !important;
 }
-
-
 /* PROFILE compact tuning */
 .profile{
   padding-top:56px !important;
