@@ -52,7 +52,7 @@ a{color:inherit;text-decoration:none}
 .scroll::before{content:"";width:1px;height:34px;background:var(--line)}
 .scroll span{display:block;width:9px;height:9px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg)}
 section{padding:68px 34px}
-
+.profile{background:var(--paper);color:var(--paper-ink);margin-top:-85px;position:relative;z-index:1}
 .section-title{font-family:Georgia,serif;font-size:12px;letter-spacing:.24em;font-weight:400;margin:0 0 38px;text-align:center}
 .section-title::after{content:"";display:block;width:38px;height:1px;background:currentColor;opacity:.35;margin:9px auto 0}
 .profile-card{display:grid;grid-template-columns:112px 1fr;gap:28px;align-items:center;max-width:390px;margin:0 auto}
@@ -62,7 +62,7 @@ section{padding:68px 34px}
 .roman{font-family:Georgia,serif;font-size:12px;letter-spacing:.18em;color:var(--paper-muted);margin:0}
 .bio{max-width:390px;margin:36px auto 0;padding-left:140px;color:var(--paper-muted);font-size:13px;line-height:2.1;letter-spacing:.12em}
 .bio::before{content:"";display:block;width:34px;height:1px;background:var(--paper-line);margin:0 0 22px}
-.links{background:linear-gradient(180deg,#4c4742,#3f3b37);color:var(--ink)}
+.links{background:linear-gradient(180deg,#4c4742,#3f3b37);color:var(--ink);margin-top:-170px;position:relative;z-index:2}
 .link-list{max-width:390px;margin:0 auto;display:grid;gap:14px}
 .link-btn{height:56px;border:1px solid var(--line);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-family:Georgia,"Yu Mincho",serif;font-size:14px;letter-spacing:.16em;background:rgba(255,255,255,.015);transition:transform .45s var(--ease),background .45s var(--ease),border-color .45s var(--ease)}
 .link-btn:hover{transform:translateX(4px);background:rgba(255,255,255,.06);border-color:rgba(246,241,235,.7)}
@@ -243,6 +243,14 @@ body.top-loaded .hero .brand .role:nth-of-type(2){
       <div class="role location">Chiba, Japan</div>
 </div>
     <a class="scroll" href="#profile">SCROLL<span></span></a>
+  </section>
+  <section class="profile" id="profile" aria-label="プロフィール">
+    <h2 class="section-title">PROFILE</h2>
+    <div class="profile-card">
+      <div class="portrait"><img src="https://res.cloudinary.com/dvr7rww8q/image/upload/v1778986402/IMG_9882_fsx375.jpg" alt="profile" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div><p class="p-role">還日堂 代表</p><h2 class="p-name">山中一馬</h2><p class="roman">Kazuma Yamanaka</p></div>
+    </div>
+    <p class="bio">東洋医学に救われ、<br>伝統医術に魅せられ、<br>日々精進しております</p>
   </section>
   <section class="links" aria-label="リンク">
     <h2 class="section-title">LINKS</h2>
